@@ -14,6 +14,7 @@ export default function ProjectPage() {
   const project = projectDetails[slug];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [carouselInView, setCarouselInView] = useState(false);
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const heroRef = useScrollReveal();
@@ -88,11 +89,66 @@ export default function ProjectPage() {
       <main id="main-content">
 
       {/* Hero */}
-      <section ref={heroRef as any} className="pt-32 pb-16 container mx-auto px-6 reveal">
+      <section ref={heroRef as any} className="pt-32 pb-16 container mx-auto px-6 reveal relative">
+        {/* Foto David - aparece em TODOS os projetos */}
+        <button
+          onClick={() => setIsPhotoModalOpen(true)}
+          className="absolute top-32 right-6 w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white shadow-xl ring-2 ring-zinc-200 hover:scale-105 transition-transform duration-300 cursor-pointer group"
+          aria-label="Ver foto de David López Giraldo em tamanho maior"
+        >
+          <Image
+            src="/david-cubo.jpg"
+            alt="David López Giraldo - Product Manager"
+            width={288}
+            height={288}
+            className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300"
+            quality={95}
+          />
+        </button>
+
         <p className="text-zinc-500 text-sm mb-2">{project.role} • {project.company}</p>
         <h1 className="text-5xl md:text-6xl font-bold mb-6 text-zinc-900">{project.title}</h1>
         <p className="text-xl text-zinc-700 max-w-3xl">{project.description}</p>
       </section>
+
+      {/* Modal da Foto */}
+      {isPhotoModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300"
+          onClick={() => setIsPhotoModalOpen(false)}
+        >
+          <div className="relative max-w-2xl w-full">
+            {/* Botão Fechar */}
+            <button
+              onClick={() => setIsPhotoModalOpen(false)}
+              className="absolute -top-12 right-0 text-white hover:text-zinc-300 transition-colors duration-300 flex items-center gap-2 text-lg font-medium"
+              aria-label="Fechar modal"
+            >
+              <span>Fechar</span>
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Foto em Alta Resolução */}
+            <div
+              className="rounded-2xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src="/david-cubo.jpg"
+                alt="David López Giraldo - Product Manager na Cubo Tecnologia"
+                width={800}
+                height={800}
+                className="w-full h-auto"
+                quality={100}
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
 
       {/* Strategy */}
       {project.strategy && (
@@ -166,11 +222,12 @@ export default function ProjectPage() {
               <div className="rounded-xl overflow-hidden border border-zinc-200 bg-white">
                 <div className="relative" style={{ maxHeight: '600px' }}>
                   <Image
+                    key={currentSlide}
                     src={project.solution[currentSlide]}
                     alt={`${project.title} - Solução ${currentSlide + 1} de ${project.solution.length}`}
                     width={1200}
                     height={800}
-                    className="w-full h-auto object-contain mx-auto transition-opacity duration-500"
+                    className="w-full h-auto object-contain mx-auto carousel-image-enter"
                     priority={currentSlide === 0}
                   />
                 </div>

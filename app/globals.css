@@ -282,3 +282,97 @@ html {
   will-change: transform;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Slide Horizontal Effect - Carousel transitions */
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0.3;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.carousel-image-exit {
+  animation: slideOutLeft 600ms cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.carousel-image-enter {
+  animation: slideInRight 600ms cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Animated Gradient Background - Apple Style */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animated-gradient-bg {
+  background: linear-gradient(
+    -45deg,
+    #0c4a6e,
+    #1e3a8a,
+    #1e40af,
+    #1d4ed8,
+    #334155,
+    #1e293b,
+    #0c4a6e
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 12s ease infinite;
+}
+
+.animated-gradient-dark {
+  background: linear-gradient(
+    -45deg,
+    #0f172a,
+    #1e293b,
+    #334155,
+    #0f172a
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease infinite;
+}
+
+/* Bottom Navigation - Mobile only */
+@media (min-width: 768px) {
+  nav[aria-label="Navegação inferior"] {
+    display: none;
+  }
+}
+
+/* Add padding to body on mobile to prevent content being hidden by bottom nav */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 80px;
+  }
+}

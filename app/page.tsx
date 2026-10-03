@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import { useScrollReveal, useParallax } from "@/hooks/useScrollReveal";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
+import { BottomNav } from "@/components/BottomNav";
 
 export default function Home() {
   return (
@@ -16,16 +17,14 @@ export default function Home() {
         Pular para o conteúdo principal
       </a>
 
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-zinc-200">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center" aria-label="Navegação principal">
-          <Link href="/" className="text-xl font-bold text-zinc-900">Isley Giraldo</Link>
-          <ul className="flex gap-6 list-none m-0 p-0">
-            <li><Link href="#trajetoria" className="text-zinc-800 hover:text-zinc-900 transition-colors duration-300">Trajetória</Link></li>
-            <li><Link href="#projetos" className="text-zinc-800 hover:text-zinc-900 transition-colors duration-300">Projetos</Link></li>
-          </ul>
+      {/* Header - Simple top bar */}
+      <header className="fixed top-0 w-full bg-zinc-900/20 backdrop-blur-md z-50 border-b border-zinc-400/30 shadow-lg">
+        <nav className="container mx-auto px-6 py-4" aria-label="Navegação principal">
+          <Link href="/" className="text-xl font-bold text-white">Isley Giraldo</Link>
         </nav>
       </header>
+
+      <BottomNav />
 
       <main id="main-content">
         {/* Hero */}
@@ -186,11 +185,12 @@ function ProjectCard({ title, role, company, description, tags, image, images, s
       {imageList.length > 0 && (
         <div ref={cardRef as any} className="w-full overflow-hidden bg-white relative" style={{ maxHeight: '300px' }}>
           <Image
+            key={currentImage}
             src={imageList[currentImage]}
             alt={`${title} - ${role} no ${company}`}
             width={400}
             height={300}
-            className="w-full h-auto object-contain transition-opacity duration-500"
+            className="w-full h-auto object-contain carousel-image-enter"
           />
           {hasMultipleImages && (
             <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 md:gap-2 bg-black/50 px-2 py-1.5 md:px-3 md:py-2 rounded-full" role="tablist" aria-label="Navegação de imagens do projeto">
@@ -265,7 +265,7 @@ function HeroSection() {
   const parallaxRef = useParallax();
 
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-black text-white relative overflow-hidden md:min-h-screen md:flex md:items-center" aria-label="Introdução">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-black text-white relative overflow-hidden md:min-h-screen md:flex md:items-center animated-gradient-bg" aria-label="Introdução">
       {/* ponytail: background text repetitions - subtle, behind with parallax */}
       <div
         ref={parallaxRef}
@@ -291,8 +291,8 @@ function HeroSection() {
 
         <div className="w-48 h-48 md:w-56 md:h-56 lg:w-72 lg:h-72 mx-auto mb-6 md:mb-8 overflow-hidden rounded-full relative z-20">
           <Image
-            src="/profile.jpg"
-            alt="Foto de perfil de Isley Giraldo, Product Manager"
+            src="/david-cubo.jpg"
+            alt="David López Giraldo na Cubo - Product Manager"
             width={288}
             height={288}
             className="w-full h-full object-cover"
