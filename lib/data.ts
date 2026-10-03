@@ -16,6 +16,7 @@ export interface Project {
   image?: string;
   images?: string[];
   slug?: string;
+  category?: "ux-ui" | "dev" | "b2g" | "b2b" | "produto" | "agile";
 }
 
 export interface Achievement {

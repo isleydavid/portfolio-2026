@@ -90,10 +90,10 @@ export default function ProjectPage() {
 
       {/* Hero */}
       <section ref={heroRef as any} className="pt-32 pb-16 container mx-auto px-6 reveal relative">
-        {/* Foto David - aparece em TODOS os projetos */}
+        {/* Foto David - reposicionada para não sobrepor texto */}
         <button
           onClick={() => setIsPhotoModalOpen(true)}
-          className="absolute top-32 right-6 w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white shadow-xl ring-2 ring-zinc-200 hover:scale-105 transition-transform duration-300 cursor-pointer group"
+          className="absolute top-4 right-6 md:top-8 md:right-8 w-20 h-20 md:w-32 md:h-32 rounded-full overflow-hidden border-2 md:border-4 border-white shadow-lg ring-1 md:ring-2 ring-zinc-200 hover:scale-105 transition-transform duration-300 cursor-pointer group z-10"
           aria-label="Ver foto de David López Giraldo em tamanho maior"
         >
           <Image
