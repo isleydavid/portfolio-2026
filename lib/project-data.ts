@@ -240,7 +240,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
   },
   "atlas-dashboard": {
     title: "Atlas Dashboard Financeiro",
-    role: "Product Designer",
+    role: "Product Manager",
     company: "BPX / Lifters",
     description: "Sistema financeiro altamente complexo com dados ao vivo e arquitetura rígida para operações de apostas esportivas e cassino.",
     strategy: [

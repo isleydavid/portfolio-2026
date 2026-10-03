@@ -33,9 +33,9 @@ export const experiences: Experience[] = [
   {
     year: "2026",
     period: "jun/2026 – atual",
-    title: "Product Designer",
+    title: "Product Manager",
     company: "Lifters / BPX",
-    description: "UX/produto na plataforma web Orion para Vai de Bet e BetPix. Padronização de fluxos, CMS backoffice, responsividade, coordenação Atlas/Sportsbook.",
+    description: "Gestão de produto na plataforma web Orion para Vai de Bet e BetPix. Padronização de fluxos, CMS backoffice, responsividade, coordenação Atlas/Sportsbook.",
     current: true
   },
   {
@@ -117,7 +117,7 @@ export const projects: Project[] = [
   },
   {
     title: "Atlas Dashboard Financeiro",
-    role: "Product Designer",
+    role: "Product Manager",
     company: "BPX / Lifters",
     description: "Sistema financeiro complexo com dados ao vivo e estrutura rígida para operações de apostas. Coordenação de entrega multidisciplinar.",
     tags: ["Fintech", "Real-time", "Dashboard"],
@@ -188,8 +188,8 @@ export const bio = {
   name: "Isley David López Giraldo",
   location: "João Pessoa, Brasil",
   email: "isley.giraldo@twinfo.io",
-  title: "Product Designer & Gerente de Produto",
-  intro: "Product Designer e Gerente de Produto com experiência em plataformas B2B/B2G e iGaming. Especialista em metodologias ágeis, liderança de squads multidisciplinares e aplicação de IA generativa em discovery e automação de processos.",
+  title: "Product Manager & Gerente de Produto",
+  intro: "Product Manager e Gerente de Produto com experiência em plataformas B2B e B2G. Especialista em metodologias ágeis, liderança de squads multidisciplinares e aplicação de IA generativa em discovery e automação de processos.",
   education: [
     "Análise e Desenvolvimento de Sistemas — UNIPÊ (2022–2023)",
     "Bacharelado em Administração de Empresas — UNIPÊ (2016–2020)"

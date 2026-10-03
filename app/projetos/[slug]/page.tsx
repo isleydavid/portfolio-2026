@@ -1,14 +1,59 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { projectDetails } from "@/lib/project-data";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { BackToTop } from "@/components/BackToTop";
 
 export default function ProjectPage() {
   const params = useParams();
   const slug = params.slug as string;
   const project = projectDetails[slug];
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [carouselInView, setCarouselInView] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const heroRef = useScrollReveal();
+  const strategyRef = useScrollReveal();
+  const processRef = useScrollReveal();
+  const solutionRef = useScrollReveal();
+  const insightsRef = useScrollReveal();
+
+  const solutionCount = project?.solution?.length || 0;
+  const hasMultipleSlides = solutionCount > 1;
+
+  // Autoplay carousel when in view
+  useEffect(() => {
+    if (!hasMultipleSlides) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setCarouselInView(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (carouselRef.current) {
+      observer.observe(carouselRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasMultipleSlides]);
+
+  useEffect(() => {
+    if (!carouselInView || !hasMultipleSlides) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === solutionCount - 1 ? 0 : prev + 1));
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [carouselInView, hasMultipleSlides, solutionCount]);
 
   if (!project) {
     return (
@@ -24,18 +69,26 @@ export default function ProjectPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
+      <ScrollProgress />
+
+      <a href="#main-content" className="skip-link">
+        Pular para o conteúdo principal
+      </a>
+
       {/* Header */}
       <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-zinc-200">
-        <nav className="container mx-auto px-6 py-4">
+        <nav className="container mx-auto px-6 py-4" aria-label="Navegação">
           <Link href="/" className="text-zinc-600 hover:text-zinc-900 transition-colors duration-300">
             ← Voltar
           </Link>
         </nav>
       </header>
 
+      <main id="main-content">
+
       {/* Hero */}
-      <section className="pt-32 pb-16 container mx-auto px-6">
+      <section ref={heroRef as any} className="pt-32 pb-16 container mx-auto px-6 reveal">
         <p className="text-zinc-500 text-sm mb-2">{project.role} • {project.company}</p>
         <h1 className="text-5xl md:text-6xl font-bold mb-6 text-zinc-900">{project.title}</h1>
         <p className="text-xl text-zinc-700 max-w-3xl">{project.description}</p>
@@ -45,8 +98,10 @@ export default function ProjectPage() {
       {project.strategy && (
         <section className="py-16 bg-zinc-50">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-zinc-900">Strategy</h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <h2 ref={strategyRef as any} className="text-3xl md:text-4xl font-bold mb-12 text-zinc-900 reveal">
+              Strategy
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8 stagger-children">
               {project.strategy.map((item, i) => (
                 <div key={i} className="bg-white p-6 rounded-xl border border-zinc-200">
                   <h3 className="text-xl font-semibold mb-3 text-zinc-900">{item.title}</h3>
@@ -60,15 +115,29 @@ export default function ProjectPage() {
 
       {/* Process */}
       {project.process && (
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-white" aria-labelledby="process-heading">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-zinc-900">{project.process.title}</h2>
+            <h2 ref={processRef as any} id="process-heading" className="text-3xl md:text-4xl font-bold mb-6 text-zinc-900 reveal">
+              {project.process.title}
+            </h2>
             <p className="text-lg text-zinc-700 mb-12 max-w-4xl">{project.process.description}</p>
             <div className="grid md:grid-cols-2 gap-8">
               {project.process.images.map((image, i) => (
-                <div key={i} className="rounded-xl overflow-hidden border border-zinc-200 bg-zinc-50">
-                  <img src={image} alt={`Process ${i + 1}`} className="w-full h-auto" />
-                  <div className="p-4 bg-white border-t border-zinc-200">
+                <figure key={i} className="rounded-xl overflow-hidden border border-zinc-200 bg-zinc-50">
+                  <Image
+                    src={image}
+                    alt={`Processo ${i + 1}: ${
+                      slug === "legislativo-conectado"
+                        ? (i === 0 ? "Squad Desenvolvimento usando Scrum" : "Squad Design usando Kanban")
+                        : slug === "atlas-dashboard"
+                        ? (i === 0 ? "Linear Board de gerenciamento" : i === 1 ? "Dashboard PLD/AML no M4 Lab" : "Comunicação COAF no M4 Lab")
+                        : `Board de gerenciamento ${i + 1}`
+                    }`}
+                    width={800}
+                    height={600}
+                    className="w-full h-auto"
+                  />
+                  <figcaption className="p-4 bg-white border-t border-zinc-200">
                     <p className="text-sm font-semibold text-zinc-900">
                       {slug === "legislativo-conectado"
                         ? (i === 0 ? "Squad Desenvolvimento (Scrum)" : "Squad Design (Kanban)")
@@ -77,8 +146,8 @@ export default function ProjectPage() {
                         : `Board ${i + 1}`
                       }
                     </p>
-                  </div>
-                </div>
+                  </figcaption>
+                </figure>
               ))}
             </div>
           </div>
@@ -87,17 +156,22 @@ export default function ProjectPage() {
 
       {/* Solution */}
       {project.solution && (
-        <section className="py-16">
+        <section className="py-16" aria-labelledby="solution-heading">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-zinc-900">Solution</h2>
-            <div className="relative max-w-5xl mx-auto">
+            <h2 ref={solutionRef as any} id="solution-heading" className="text-3xl md:text-4xl font-bold mb-12 text-zinc-900 reveal">
+              Solution
+            </h2>
+            <div ref={carouselRef as any} className="relative max-w-5xl mx-auto reveal-scale" role="region" aria-label="Galeria de soluções do projeto" aria-live="polite">
               {/* ponytail: carousel simples, CSS-only navigation */}
               <div className="rounded-xl overflow-hidden border border-zinc-200 bg-white">
                 <div className="relative" style={{ maxHeight: '600px' }}>
-                  <img
+                  <Image
                     src={project.solution[currentSlide]}
-                    alt={`${project.title} - ${currentSlide + 1}`}
-                    className="w-full h-auto object-contain mx-auto"
+                    alt={`${project.title} - Solução ${currentSlide + 1} de ${project.solution.length}`}
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto object-contain mx-auto transition-opacity duration-500"
+                    priority={currentSlide === 0}
                   />
                 </div>
               </div>
@@ -107,24 +181,29 @@ export default function ProjectPage() {
                   {/* Navigation arrows */}
                   <button
                     onClick={() => setCurrentSlide((prev) => prev === 0 ? project.solution!.length - 1 : prev - 1)}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition"
+                    aria-label="Slide anterior"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition min-w-[48px] min-h-[48px] flex items-center justify-center"
                   >
-                    ←
+                    <span aria-hidden="true">←</span>
                   </button>
                   <button
                     onClick={() => setCurrentSlide((prev) => prev === project.solution!.length - 1 ? 0 : prev + 1)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition"
+                    aria-label="Próximo slide"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-4 rounded-full transition min-w-[48px] min-h-[48px] flex items-center justify-center"
                   >
-                    →
+                    <span aria-hidden="true">→</span>
                   </button>
 
                   {/* Dots */}
-                  <div className="flex justify-center gap-2 mt-6">
+                  <div className="flex justify-center gap-1.5 md:gap-2 mt-6" role="tablist" aria-label="Navegação de slides">
                     {project.solution.map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setCurrentSlide(i)}
-                        className={`w-3 h-3 rounded-full transition ${
+                        role="tab"
+                        aria-selected={i === currentSlide}
+                        aria-label={`Ir para slide ${i + 1} de ${project.solution?.length || 0}`}
+                        className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition cursor-pointer ${
                           i === currentSlide ? "bg-zinc-900" : "bg-zinc-300"
                         }`}
                       />
@@ -141,8 +220,10 @@ export default function ProjectPage() {
       {project.insights && (
         <section className="py-16 bg-zinc-50">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-zinc-900">Insights</h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <h2 ref={insightsRef as any} className="text-3xl md:text-4xl font-bold mb-12 text-zinc-900 reveal">
+              Insights
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8 stagger-children">
               {project.insights.map((insight, i) => (
                 <div key={i} className="bg-white p-8 rounded-xl border border-zinc-200">
                   <p className="text-4xl font-bold text-emerald-600 mb-4">{insight.metric}</p>
@@ -154,14 +235,18 @@ export default function ProjectPage() {
         </section>
       )}
 
+      </main>
+
       {/* Footer */}
       <footer className="py-12 bg-white border-t border-zinc-200">
-        <div className="container mx-auto px-6 text-center">
+        <nav className="container mx-auto px-6 text-center" aria-label="Navegação do rodapé">
           <Link href="/#projetos" className="text-zinc-600 hover:text-zinc-900 transition-colors duration-300">
             ← Ver mais projetos
           </Link>
-        </div>
+        </nav>
       </footer>
-    </main>
+
+      <BackToTop />
+    </div>
   );
 }
