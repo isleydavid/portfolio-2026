@@ -43,7 +43,7 @@ export function BottomNav() {
     {
       id: "email",
       label: "Email",
-      href: "mailto:isley.giraldo@twinfo.io",
+      href: "mailto:idlopezgiraldo.dlg@gmail.com",
       isEmail: true,
       icon: (
         <path

@@ -176,6 +176,12 @@ export const projectDetails: Record<string, ProjectDetail> = {
     role: "Gerente de Produto",
     company: "Cubo Tecnologia",
     description: "Dashboard executivo em tempo real com visão 360° de toda gestão municipal: solicitações, demandas geográficas, avaliações de serviços, performance de setores e indicadores de eficiência.",
+    testimonial: {
+      quote: "O dashboard transformou completamente nossa capacidade de gestão. Temos visibilidade em tempo real de todas as solicitações e podemos tomar decisões baseadas em dados concretos para melhorar a vida dos cidadãos de João Pessoa.",
+      author: "Cícero Lucena",
+      role: "Prefeito de João Pessoa (PB)",
+      photo: "/cicero-lucena.png"
+    },
     strategy: [
       {
         title: "Problema",

@@ -277,7 +277,7 @@ export default function ProjectPage() {
                 EXCITED? LET'S GET MOVING.
               </h2>
               <a
-                href="mailto:isley.giraldo@twinfo.io"
+                href="mailto:idlopezgiraldo.dlg@gmail.com"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -320,7 +320,7 @@ export default function ProjectPage() {
                 </svg>
               </a>
               <a
-                href="mailto:isley.giraldo@twinfo.io"
+                href="mailto:idlopezgiraldo.dlg@gmail.com"
                 className="aspect-square bg-zinc-200 rounded-3xl flex items-center justify-center hover:bg-zinc-300 transition-all duration-300 group"
               >
                 <svg className="w-20 h-20 text-blue-600 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -335,7 +335,7 @@ export default function ProjectPage() {
                 <div className="flex flex-wrap gap-x-6 gap-y-2 mb-4 md:mb-0">
                   <a href="/#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">TRAJETÓRIA</a>
                   <a href="/#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">PROJETOS</a>
-                  <a href="mailto:isley.giraldo@twinfo.io" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">CONTATO</a>
+                  <a href="mailto:idlopezgiraldo.dlg@gmail.com" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">CONTATO</a>
                 </div>
                 <p className="text-zinc-500">© 2026 David López Giraldo</p>
               </div>

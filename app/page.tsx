@@ -93,10 +93,10 @@ export default function Home() {
             {/* Título CTA + Botão */}
             <div className="flex flex-col md:flex-row items-center justify-between mb-16 bg-white rounded-3xl p-8 md:p-12">
               <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-6 md:mb-0">
-                EXCITED? LET'S GET MOVING.
+                LET'S TALK ABOUT YOUR PRODUCT.
               </h2>
               <a
-                href="mailto:isley.giraldo@twinfo.io"
+                href="mailto:idlopezgiraldo.dlg@gmail.com"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,7 +139,7 @@ export default function Home() {
                 </svg>
               </a>
               <a
-                href="mailto:isley.giraldo@twinfo.io"
+                href="mailto:idlopezgiraldo.dlg@gmail.com"
                 className="aspect-square bg-zinc-200 rounded-3xl flex items-center justify-center hover:bg-zinc-300 transition-all duration-300 group"
               >
                 <svg className="w-20 h-20 text-blue-600 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,7 +154,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-x-6 gap-y-2 mb-4 md:mb-0">
                   <a href="#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">TRAJETÓRIA</a>
                   <a href="#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">PROJETOS</a>
-                  <a href="mailto:isley.giraldo@twinfo.io" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">CONTATO</a>
+                  <a href="mailto:idlopezgiraldo.dlg@gmail.com" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">CONTATO</a>
                 </div>
                 <p className="text-zinc-500">© 2026 David López Giraldo</p>
               </div>
@@ -393,15 +393,15 @@ function HeroSection() {
         <p className="text-5xl md:text-9xl font-bold text-zinc-600 whitespace-nowrap">DAVID LOPEZ</p>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-[1.2]">
+      <div className="container mx-auto px-4 md:px-6 text-center relative z-10 py-8">
+        <h1 className="text-4xl md:text-5xl font-bold mb-3 md:mb-4 leading-[1.1]">
           HI, I AM
         </h1>
-        <p className="text-4xl md:text-7xl font-bold mb-6 md:mb-8 leading-[1.2]" aria-label="David López Giraldo">
+        <p className="text-4xl md:text-6xl font-bold mb-5 md:mb-6 leading-[1.1]" aria-label="David López Giraldo">
           DAVID LÓPEZ GIRALDO
         </p>
 
-        <div className="w-32 h-32 md:w-56 md:h-56 mx-auto mb-6 md:mb-8 overflow-hidden rounded-full relative z-20">
+        <div className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-5 md:mb-6 overflow-hidden rounded-full relative z-20">
           <Image
             src="/david-cubo.jpg"
             alt="David López Giraldo na Cubo - Product Manager"
@@ -411,8 +411,8 @@ function HeroSection() {
             priority
           />
         </div>
-        <p className="text-zinc-300 text-sm md:text-lg mb-4 md:mb-6 relative z-10">{bio.location}</p>
-        <p className="text-base md:text-lg text-zinc-200 max-w-2xl mx-auto leading-[1.75] relative z-10 px-4">
+        <p className="text-zinc-300 text-sm md:text-base mb-3 md:mb-4 relative z-10">{bio.location}</p>
+        <p className="text-sm md:text-base text-zinc-200 max-w-2xl mx-auto leading-[1.6] relative z-10 px-4">
           {bio.intro}
         </p>
       </div>

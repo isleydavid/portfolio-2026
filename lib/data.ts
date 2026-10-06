@@ -188,7 +188,7 @@ export const skills: Skill[] = [
 export const bio = {
   name: "Isley David López Giraldo",
   location: "João Pessoa, Brasil",
-  email: "isley.giraldo@twinfo.io",
+  email: "idlopezgiraldo.dlg@gmail.com",
   title: "Product Manager & Gerente de Produto",
   intro: "Product Manager e Gerente de Produto com experiência em plataformas B2B e B2G. Especialista em metodologias ágeis, liderança de squads multidisciplinares e aplicação de IA generativa em discovery e automação de processos.",
   education: [
