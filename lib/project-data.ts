@@ -43,7 +43,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     tags: ["Product Management", "UX/UI Design", "Gestão Ágil", "Arquitetura de Sistemas"],
     challenge: "Para uma empresa que atua em mercados públicos, mapear necessidades do estado é essencial. O Legislativo Conectado não foi desenvolvido como um projeto isolado, mas como parte de um ecossistema integrado — alinhado com outras soluções governamentais e considerando a realidade operacional das assembleias. David especializa-se justamente nisso: desenhar produtos que funcionam em contextos multi-projeto e multi-stakeholder, onde cada módulo precisa conversar com infraestruturas existentes e futuras.",
     testimonial: {
-      quote: "Trabalhar com David foi transformador. Ele não apenas entregou um produto robusto, mas entendeu profundamente as necessidades do estado e como o Legislativo Conectado se integra ao ecossistema maior de soluções públicas. A capacidade dele em navegar complexidade governamental e estruturar soluções escaláveis foi excepcional.",
+      quote: "Ele não apenas entregou um produto robusto, mas entendeu profundamente as necessidades do estado e como o Legislativo Conectado se integra ao ecossistema maior de soluções públicas. A capacidade dele em navegar complexidade governamental e estruturar soluções escaláveis foi excepcional.",
       author: "Jonathan Veras",
       role: "Cubo Tecnologia",
       photo: "/jonathan-veras.png"
