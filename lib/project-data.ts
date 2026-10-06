@@ -3,6 +3,7 @@ export interface ProjectDetail {
   role: string;
   company: string;
   description: string;
+  challenge?: string;
   strategy?: {
     title: string;
     description: string;
@@ -11,12 +12,25 @@ export interface ProjectDetail {
     title: string;
     description: string;
     images: string[];
+    stages?: {
+      title: string;
+      description: string;
+    }[];
   };
   solution?: string[];
   insights?: {
     metric: string;
     description: string;
   }[];
+  testimonial?: {
+    quote: string;
+    author: string;
+    role: string;
+    photo?: string;
+  };
+  industry?: string;
+  tags?: string[];
+  liveUrl?: string;
 }
 
 export const projectDetails: Record<string, ProjectDetail> = {
@@ -24,25 +38,44 @@ export const projectDetails: Record<string, ProjectDetail> = {
     title: "Legislativo Conectado",
     role: "Gerente de Produto",
     company: "Cubo Tecnologia",
-    description: "SaaS B2B2G com 13 módulos integrados que transformou a participação cidadã em câmaras municipais e assembleias legislativas.",
+    description: "Desenvolvemos uma plataforma integrada de 13 módulos que modernizou processos legislativos em assembleias estaduais. O Legislativo Conectado combina gestão parlamentar, participação cidadã e transparência administrativa em um único ecossistema — eliminando silos de informação e acelerando a tomada de decisão legislativa.",
+    industry: "GovTech",
+    tags: ["Product Management", "UX/UI Design", "Gestão Ágil", "Arquitetura de Sistemas"],
+    challenge: "Para uma empresa que atua em mercados públicos, mapear necessidades do estado é essencial. O Legislativo Conectado não foi desenvolvido como um projeto isolado, mas como parte de um ecossistema integrado — alinhado com outras soluções governamentais e considerando a realidade operacional das assembleias. David especializa-se justamente nisso: desenhar produtos que funcionam em contextos multi-projeto e multi-stakeholder, onde cada módulo precisa conversar com infraestruturas existentes e futuras.",
+    testimonial: {
+      quote: "Trabalhar com David foi transformador. Ele não apenas entregou um produto robusto, mas entendeu profundamente as necessidades do estado e como o Legislativo Conectado se integra ao ecossistema maior de soluções públicas. A capacidade dele em navegar complexidade governamental e estruturar soluções escaláveis foi excepcional.",
+      author: "Jonathan Veras",
+      role: "Cubo Tecnologia",
+      photo: "/jonathan-veras.png"
+    },
     strategy: [
       {
-        title: "Problema",
-        description: "Câmaras municipais com processos burocráticos em papel, baixa participação cidadã e dificuldade de acompanhamento legislativo."
-      },
-      {
-        title: "Solução",
-        description: "Plataforma modular que digitaliza serviços legislativos: Portal do Cidadão, Monitor Legislativo, Enquetes, Audiências Públicas, Teleatendimento."
-      },
-      {
-        title: "Approach",
-        description: "Metodologia ágil com 2 squads multidisciplinares, aplicação de IA generativa em discovery e construção incremental de módulos."
+        title: "Nossa Abordagem GovTech",
+        description: "Para uma empresa que atua em mercados públicos, mapear necessidades do estado é essencial. O Legislativo Conectado não foi desenvolvido como um projeto isolado, mas como parte de um ecossistema integrado — alinhado com outras soluções governamentais e considerando a realidade operacional das assembleias."
       }
     ],
     process: {
       title: "Gestão de Demandas",
-      description: "Gestão ágil de demandas utilizando Jira com fluxos separados: Squad de Desenvolvimento com Scrum board (10 itens pendentes, 1 em andamento, 3 em impedimento, code review, 44 em teste, aguardando validação e 13 concluídos) e Squad de Design com Kanban board (Ideias & Insights, Pronto para Design, Em Andamento, Bloqueado, Ajustes Design, Validação PO e Concluídos).",
-      images: ["/projects/legislativo-jira-dev.png", "/projects/legislativo-jira-design.png"]
+      description: "Coordenação ágil de dois squads — Desenvolvimento e Design — via Jira com fluxos especializados. Scrum board de dev prioriza código production-ready e code review antes de validação. Kanban de design mantém ideias fluindo do conceito até ajustes finais. Essa separação garante velocidade em design enquanto dev foca em estabilidade e qualidade.",
+      images: ["/projects/legislativo-jira-dev.png", "/projects/legislativo-jira-design.png"],
+      stages: [
+        {
+          title: "Discovery",
+          description: "Mapeamento profundo da estrutura legislativa estadual: fluxos de votação, tramitação de matérias, dinâmicas entre poderes. Conversas diretas com gestores de assembleias validaram painpoints reais e oportunidades de simplificação alinhadas com prioridades estaduais."
+        },
+        {
+          title: "Design",
+          description: "David prototipou todo o sistema antes de envolver o time de design. Isso permitiu conversas estruturadas, reduzindo retrabalho e garantindo que cada interface refletisse processos legislativos reais. Iterações com stakeholders públicos asseguraram usabilidade para públicos muito diferentes — técnicos e não-técnicos."
+        },
+        {
+          title: "Development",
+          description: "Implementação de 13 módulos integrados com arquitetura pensada para escala estadual. LGPD compliance, segurança em nível governamental e interoperabilidade com sistemas existentes foram prioridades técnicas desde o início."
+        },
+        {
+          title: "Launch",
+          description: "Deploy em assembleias estaduais com suporte contínuo. Treinamento de servidores públicos e iterações rápidas garantiram adoção real e sustentável."
+        }
+      ]
     },
     solution: [
       "/projects/legislativo-conectado.png",
@@ -50,8 +83,8 @@ export const projectDetails: Record<string, ProjectDetail> = {
     ],
     insights: [
       {
-        metric: "6 prefeituras",
-        description: "Implementação do zero até 6 municípios ativos utilizando a plataforma"
+        metric: "6 assembleias",
+        description: "Implementação do zero até 6 assembleias estaduais ativamente utilizando a plataforma"
       },
       {
         metric: "2M+ cidadãos",
@@ -71,21 +104,53 @@ export const projectDetails: Record<string, ProjectDetail> = {
     title: "Cidade Conectada",
     role: "Gerente de Projetos",
     company: "Cubo Tecnologia",
-    description: "Plataforma omnichannel de gestão municipal em três camadas que elimina filas, papel e burocracia, transformando a relação entre cidadãos e governo.",
+    description: "Uma plataforma municipal integrada que oferece mais de 600 serviços digitais aos cidadãos. O Cidade Conectada transforma burocracia em agilidade através de três pilares: aplicativo white-label para cidadãos, Portal do Servidor para gestão de solicitações e Dashboard do Prefeito para monitoramento executivo em tempo real. A plataforma elimina filas, reduz uso de papel, digitaliza processos e desburocratiza a relação entre cidadão e prefeitura — tudo acessível pela palma da mão.",
+    industry: "GovTech",
+    tags: ["Product Management", "White-label", "Omnichannel", "Mobile"],
+    challenge: "Processos burocráticos dependentes de papel, filas presenciais intermináveis, lentidão no atendimento e dificuldade de acompanhamento de solicitações pelos cidadãos. Prefeituras enfrentavam sobrecarga em setores com alta demanda e ausência de transparência no status de processos.",
+    testimonial: {
+      quote: "O aplicativo é um marco para a gestão. São vários serviços disponibilizados para facilitar e dar transparência para os cidadãos.",
+      author: "Cícero Lucena",
+      role: "Prefeito de João Pessoa (PB)",
+      photo: "/cicero-lucena.png"
+    },
     strategy: [
       {
-        title: "Problema",
-        description: "Processos burocráticos dependentes de papel, filas presenciais intermináveis, lentidão no atendimento e dificuldade de acompanhamento de solicitações pelos cidadãos."
+        title: "Aplicativo para o Cidadão",
+        description: "Mais de 600 serviços disponíveis de forma simples e intuitiva. App customizável com nome, cores e identidade visual da prefeitura. Omnichannel: funciona em web e mobile."
       },
       {
-        title: "Solução",
-        description: "Arquitetura de três camadas: App mobile para cidadãos com 600+ serviços, Portal do Servidor para análise e resposta de demandas, e Dashboard do Prefeito para monitoramento em tempo real."
+        title: "Portal do Servidor",
+        description: "Recebe, analisa e responde todas as solicitações do aplicativo. Centraliza fluxos de trabalho das secretarias em um único ponto de controle."
       },
       {
-        title: "Approach",
-        description: "White-label customizável por município: nome do app alinhado à marca da cidade, cores da identidade visual e seleção de serviços ativos conforme necessidades locais."
+        title: "Dashboard do Prefeito",
+        description: "Monitoramento em tempo real de todas as solicitações, desempenho das secretarias, métricas de satisfação e indicadores de gestão. Visão executiva que transforma dados em decisão."
       }
     ],
+    process: {
+      title: "Benefícios Realizados",
+      description: "A plataforma elimina filas através de processos digitais que reduzem tempo de espera, remove papel com gestão totalmente digital, simplifica burocracia com interfaces pensadas para cidadãos não-técnicos, e garante transparência ao permitir que cidadãos acompanhem status de solicitações em tempo real.",
+      images: [],
+      stages: [
+        {
+          title: "Sem filas",
+          description: "Processos digitais reduzem tempo de espera eliminando necessidade de deslocamento e atendimento presencial."
+        },
+        {
+          title: "Sem papel",
+          description: "Gestão totalmente digital elimina formulários físicos, protocolos impressos e arquivos mortos."
+        },
+        {
+          title: "Sem burocracia",
+          description: "Interfaces pensadas para cidadãos não-técnicos simplificam fluxos e reduzem barreiras de acesso."
+        },
+        {
+          title: "Transparência",
+          description: "Cidadãos acompanham status de solicitações em tempo real através do aplicativo."
+        }
+      ]
+    },
     solution: ["/projects/cidade-conectada.png", "/projects/cidade-conectada-2.png", "/projects/cidade-conectada-3.png"],
     insights: [
       {
@@ -93,16 +158,16 @@ export const projectDetails: Record<string, ProjectDetail> = {
         description: "Catálogo completo de serviços municipais digitalizados disponíveis via app"
       },
       {
-        metric: "4 cidades ativas",
-        description: "João Pessoa, Campina Grande, Cabedelo e Feira de Santana utilizando a plataforma"
-      },
-      {
-        metric: "Milhões de acessos",
-        description: "Alto volume de interações registradas na plataforma desde o lançamento"
+        metric: "4 cidades em produção",
+        description: "João Pessoa (PB), Campina Grande (PB), Cabedelo (PB) e Feira de Santana (BA)"
       },
       {
         metric: "100% paperless",
         description: "Eliminação total de papel e processos físicos nos serviços digitalizados"
+      },
+      {
+        metric: "White-label",
+        description: "App customizável com identidade visual, nome e serviços selecionados por município"
       }
     ]
   },

@@ -4,40 +4,63 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  /* Design System - Colors */
-  --color-primary: #3B82F6;
-  --color-secondary: #6366F1;
-  --color-accent: #10B981;
+  /* ========================================
+     DESIGN SYSTEM TOKENS
+     Based on Snowhouse Studio Reference
+     ======================================== */
 
-  /* Design System - Typography Scale */
-  --text-xs: 0.75rem;      /* 12px */
-  --text-sm: 0.875rem;     /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg: 1.125rem;     /* 18px */
-  --text-xl: 1.25rem;      /* 20px */
-  --text-2xl: 1.5rem;      /* 24px */
-  --text-3xl: 1.875rem;    /* 30px */
-  --text-4xl: 2.25rem;     /* 36px */
-  --text-5xl: 3rem;        /* 48px */
+  /* Colors - Primary */
+  --primary-600: #3B82F6;
+  --primary-700: #2563EB;
+  --accent-red: #EF4444;
 
-  /* Design System - Spacing */
-  --spacing-xs: 0.5rem;    /* 8px */
-  --spacing-sm: 1rem;      /* 16px */
-  --spacing-md: 1.5rem;    /* 24px */
-  --spacing-lg: 2rem;      /* 32px */
-  --spacing-xl: 3rem;      /* 48px */
+  /* Colors - Neutral */
+  --zinc-50: #FAFAFA;
+  --zinc-100: #F4F4F5;
+  --zinc-600: #52525B;
+  --zinc-900: #18181B;
+  --white: #FFFFFF;
+  --black: #000000;
 
-  /* Design System - Radius */
-  --radius-sm: 0.5rem;     /* 8px */
-  --radius-md: 0.75rem;    /* 12px */
-  --radius-lg: 1rem;       /* 16px */
+  /* Typography Scale - Mobile Base / Desktop Via Classes */
+  --text-label: 0.625rem;      /* 10px - Tags/Labels mobile */
+  --text-xs: 0.75rem;          /* 12px - Body Small mobile */
+  --text-sm: 0.875rem;         /* 14px - Body Regular mobile */
+  --text-base: 1rem;           /* 16px - Body Large mobile */
+  --text-lg: 1.125rem;         /* 18px - Body Large desktop */
+  --text-xl: 1.25rem;          /* 20px - H3 mobile */
+  --text-2xl: 1.5rem;          /* 24px - H3 desktop */
+  --text-3xl: 2rem;            /* 32px - H2 mobile */
+  --text-4xl: 3rem;            /* 48px - H2 desktop / H1 mobile */
+  --text-5xl: 4rem;            /* 64px - Display */
+  --text-6xl: 6rem;            /* 96px - H1 desktop */
+  --text-7xl: 7rem;            /* 112px - Name display desktop */
+
+  /* Spacing System - 8px Base */
+  --spacing-xs: 0.5rem;        /* 8px - Micro gaps */
+  --spacing-sm: 1rem;          /* 16px - Card padding mobile */
+  --spacing-md: 1.5rem;        /* 24px - Component spacing */
+  --spacing-lg: 2rem;          /* 32px - Between sections */
+  --spacing-xl: 3rem;          /* 48px - Section padding mobile */
+  --spacing-2xl: 4rem;         /* 64px - Section padding tablet */
+  --spacing-3xl: 6rem;         /* 96px - Section padding desktop */
+
+  /* Border Radius */
+  --radius-sm: 0.5rem;         /* 8px */
+  --radius-md: 0.75rem;        /* 12px */
+  --radius-lg: 1rem;           /* 16px */
+  --radius-xl: 1.5rem;         /* 24px */
+
+  /* Line Heights */
+  --leading-tight: 1.2;        /* Títulos */
+  --leading-normal: 1.5;       /* Corpo de texto */
+  --leading-relaxed: 1.75;     /* Parágrafos longos */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,7 +73,41 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utilities */
+h1, h2 {
+  font-weight: 700; /* Inter Bold - moderno e elegante */
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em; /* Tracking equilibrado */
+}
+
+h3, h4, h5, h6 {
+  font-weight: 600; /* Inter Semibold - mais leve */
+  line-height: var(--leading-tight);
+}
+
+p {
+  line-height: var(--leading-normal);
+}
+
+/* Font Weight Utilities - Snowhouse Style */
+.font-bold {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-regular {
+  font-weight: 400;
 }
 
 /* Scroll padding for fixed header */
@@ -424,6 +481,16 @@ html {
   }
 }
 
+/* Mobile - 10% mais rápido (36s ao invés de 40s) */
+.animate-scroll-right-mobile {
+  animation: scroll-right 36s linear infinite;
+}
+
+.animate-scroll-left-mobile {
+  animation: scroll-left 36s linear infinite;
+}
+
+/* Desktop - velocidade normal */
 .animate-scroll-right {
   animation: scroll-right 40s linear infinite;
 }
