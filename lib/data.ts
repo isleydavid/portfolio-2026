@@ -108,10 +108,10 @@ export const projects: Project[] = [
     images: ["/projects/processo-eletronico-1.png", "/projects/processo-eletronico-2.png", "/projects/processo-eletronico-3.png"]
   },
   {
-    title: "Teleatendimento por Videochamada",
+    title: "Teleatendimento",
     role: "Gerente de Produto",
     company: "Cubo Tecnologia",
-    description: "Sistema completo de teleatendimento com videochamada, intérprete de Libras, chat, gestão de filas e salas virtuais para atendimento municipal.",
+    description: "Sistema de teleatendimento com videochamada, Libras premiado nacionalmente, gestão de filas inteligente e documentação automática integrada ao app municipal.",
     tags: ["WebRTC", "Acessibilidade", "Real-time"],
     slug: "teleatendimento",
     images: ["/projects/teleatendimento-1.png", "/projects/teleatendimento-2.png", "/projects/teleatendimento-4.png"]

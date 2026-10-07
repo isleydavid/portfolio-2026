@@ -266,22 +266,29 @@ export const projectDetails: Record<string, ProjectDetail> = {
     ]
   },
   "teleatendimento": {
-    title: "Teleatendimento por Videochamada",
+    title: "Teleatendimento",
     role: "Gerente de Produto",
     company: "Cubo Tecnologia",
-    description: "Sistema completo de teleatendimento com videochamada em tempo real, intérprete de Libras integrado, chat, gestão de filas e salas virtuais para atendimento municipal acessível e inclusivo.",
+    industry: "GovTech",
+    tags: ["Product Management", "WebRTC", "Acessibilidade", "Videochamada"],
+    description: "Sistema completo de teleatendimento com videochamada em tempo real que revolucionou o atendimento municipal. Originalmente desenvolvido para atender uma necessidade pública, o produto foi adaptado para a realidade da população, oferecendo consultas médicas, atendimento Procon e outros serviços via aplicativo municipal — garantindo que nenhum cidadão saia sem ser atendido.",
+    challenge: "O projeto surgiu de uma necessidade pública e de padrão para subir, mas seu uso teve que ser adaptado à população. O desafio foi criar uma solução que funcionasse para qualquer cidadão, em qualquer horário que o serviço estivesse disponível, com gestão inteligente de filas que garante atendimento para todos que entram — mesmo quando novas entradas são bloqueadas ao atingir capacidade, quem já entrou será atendido.",
     strategy: [
       {
-        title: "Problema",
-        description: "Necessidade de atendimento remoto acessível para cidadãos com deficiência auditiva, gestão de múltiplas salas simultâneas e acompanhamento de histórico de atendimentos."
+        title: "Adaptação à População",
+        description: "Sistema integrado ao aplicativo municipal permite acesso a qualquer hora que o serviço estiver disponível — como consulta médica ou atendimento Procon. O cidadão entra automaticamente em uma fila de atendimento com garantia de ser atendido."
       },
       {
-        title: "Solução",
-        description: "Plataforma WebRTC com videochamada HD, intérprete de Libras integrado, chat em tempo real, sistema de filas inteligente, gestão de salas virtuais (AO VIVO, SUSPENSO) e histórico completo de atendimentos."
+        title: "Gestão Inteligente de Filas",
+        description: "Sistema de controle interno de chamados que, ao atingir capacidade máxima, cancela novas entradas mas garante atendimento para todos que já estão na fila. Nenhum cidadão sai sem ser atendido."
       },
       {
-        title: "Approach",
-        description: "Interface dividida em duas perspectivas: view do cidadão (iniciar/pausar atendimento, chat, documentos) e portal do servidor (múltiplas salas, fila de espera, avaliação de atendimento, documentos anexados)."
+        title: "Acessibilidade Premiada",
+        description: "Integração com um dos únicos sistemas premiados a nível nacional de tradução de Libras. O intérprete de Libras está integrado diretamente ao sistema, tornando o atendimento acessível para cidadãos com deficiência auditiva."
+      },
+      {
+        title: "Documentação Automática",
+        description: "Ao finalizar o atendimento, documentos ou recomendações faladas ficam automaticamente registrados no arquivo para o cidadão acessar depois. Tudo integrado ao sistema municipal."
       }
     ],
     solution: [
@@ -290,22 +297,28 @@ export const projectDetails: Record<string, ProjectDetail> = {
       "/projects/teleatendimento-3.png",
       "/projects/teleatendimento-4.png"
     ],
+    testimonial: {
+      quote: "O teleatendimento transformou nosso atendimento ao cidadão. A integração com Libras e a garantia de que todos serão atendidos trouxe acessibilidade real para nossa população. É um exemplo de tecnologia a serviço da inclusão.",
+      author: "Cícero Lucena",
+      role: "Prefeito de João Pessoa (PB)",
+      photo: "/cicero-lucena.png"
+    },
     insights: [
       {
-        metric: "WebRTC",
-        description: "Videochamada em tempo real com baixa latência"
+        metric: "Premiado nacionalmente",
+        description: "Integração com sistema premiado de tradução de Libras a nível nacional"
       },
       {
-        metric: "Acessibilidade",
-        description: "Intérprete de Libras integrado para inclusão de pessoas com deficiência auditiva"
+        metric: "100% de atendimento",
+        description: "Sistema de filas garante que nenhum cidadão sai sem ser atendido"
       },
       {
-        metric: "Gestão de Filas",
-        description: "Sistema de salas virtuais com status (AO VIVO, SUSPENSO) e tempo estimado de espera"
+        metric: "Documentação automática",
+        description: "Recomendações e documentos falados ficam registrados automaticamente no sistema"
       },
       {
-        metric: "Histórico Completo",
-        description: "Registro de conversas, avaliações, documentos anexados e timeline de atendimentos"
+        metric: "Múltiplos serviços",
+        description: "Consultas médicas, Procon e outros serviços municipais via aplicativo"
       }
     ]
   },
