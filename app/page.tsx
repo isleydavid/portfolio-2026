@@ -9,7 +9,7 @@ import { BackToTop } from "@/components/BackToTop";
 import { BottomNav } from "@/components/BottomNav";
 import { ProjectTag } from "@/components/ProjectTag";
 import { InfiniteCarousel } from "@/components/InfiniteCarousel";
-import { LanguageSelector } from "@/components/LanguageSelector";
+import { Header } from "@/components/Header";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
@@ -23,13 +23,7 @@ export default function Home() {
         {t("header.skipToContent")}
       </a>
 
-      {/* Header - Simple top bar */}
-      <header className="fixed top-0 w-full bg-zinc-900/20 backdrop-blur-md z-50 border-b border-zinc-400/30 shadow-lg">
-        <nav className="container mx-auto px-6 py-4 flex items-center justify-between" aria-label="Navegação principal">
-          <Link href="/" className="text-xl font-bold text-white">{t("header.title")}</Link>
-          <LanguageSelector />
-        </nav>
-      </header>
+      <Header />
 
       <BottomNav />
 
@@ -41,7 +35,7 @@ export default function Home() {
         <InfiniteCarousel />
 
         {/* Sobre Mim */}
-        <section className="py-20 md:py-24 bg-white" aria-labelledby="sobre-heading">
+        <section id="sobre" className="py-20 md:py-24 bg-white" aria-labelledby="sobre-heading">
           <div className="container mx-auto px-6 max-w-4xl">
             <h2 id="sobre-heading" className="text-4xl md:text-5xl font-bold mb-12 text-zinc-900">{t("about.title")}</h2>
             <div className="space-y-6 text-zinc-700">
@@ -504,7 +498,7 @@ function ConquistasSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-zinc-50" aria-labelledby="conquistas-heading">
+    <section id="conquistas" className="py-12 md:py-16 lg:py-24 bg-zinc-50" aria-labelledby="conquistas-heading">
       <div className="container mx-auto px-4 md:px-6">
         <h2
           ref={headingRef as any}
