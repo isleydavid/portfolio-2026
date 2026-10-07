@@ -322,6 +322,67 @@ export const projectDetails: Record<string, ProjectDetail> = {
       }
     ]
   },
+  "chat-ia-municipal": {
+    title: "Chat IA Municipal",
+    role: "Product Manager",
+    company: "Cubo Tecnologia",
+    industry: "GovTech",
+    tags: ["IA Generativa", "ChatBot", "NLP", "Context-Aware"],
+    description: "Assistente inteligente contextualizado que permite cidadãos acessarem todo o ecossistema municipal através de conversação natural. Com o novo movimento comportamental de sempre procurar uma IA, desenvolvemos um chatbot que tem contexto completo da plataforma — onde tudo que o cidadão faria no aplicativo pode ser feito através de conversa.",
+    challenge: "O desafio era criar uma experiência de IA que não fosse genérica, mas sim profundamente integrada ao sistema municipal. O cidadão precisava ter a mesma praticidade das IAs populares, porém no contexto específico do município — e com isso, o alcance do usuário para encontrar informações ou realizar ações seria até mais fácil do que navegar pela interface tradicional.",
+    strategy: [
+      {
+        title: "IA Contextual ao Sistema",
+        description: "Todo o fluxo disponível no aplicativo municipal está acessível via chat. O cidadão pode consultar projetos de lei, abrir denúncias, verificar agendas públicas, acompanhar solicitações — tudo por conversa natural. A IA tem contexto completo da plataforma e dados em tempo real."
+      },
+      {
+        title: "Configuração de Agentes",
+        description: "Camada robusta de configuração que permite definir tom e personalidade do agente, base de conhecimento (upload de documentos PDF), contexto institucional, escopo de atendimento, comportamento do modelo e escalada para humanos. Controle fino sobre como a IA se comunica com o cidadão."
+      },
+      {
+        title: "Bloqueio de Assuntos Irrelevantes",
+        description: "Sistema inteligente que bloqueia assuntos que não fazem sentido para o contexto municipal. A IA sabe identificar quando uma pergunta está fora do escopo e redireciona o cidadão de forma educada. Evita dispersão e mantém foco nos serviços municipais."
+      },
+      {
+        title: "Adaptável a Qualquer Ecossistema",
+        description: "A ferramenta foi arquitetada para funcionar tanto no Cidade Conectada quanto no Legislativo Conectado. Mesma tecnologia, contextos diferentes. Pode ser configurada para assistência ao cidadão, ao vereador, ou qualquer outro perfil dentro do ecossistema GovTech."
+      },
+      {
+        title: "Histórico e Conversas Abertas",
+        description: "Sistema completo de gestão de conversas com histórico persistente, categorização por assunto (Agenda, Denúncia, Vereador, Projeto de lei, Transporte público), possibilidade de retomar conversas anteriores e dashboard com métricas de uso e satisfação."
+      }
+    ],
+    testimonial: {
+      quote: "A IA transformou a forma como os cidadãos interagem com nossa cidade. Agora, ao invés de navegar por menus, eles simplesmente conversam e resolvem. É a praticidade das IAs modernas aplicada ao serviço público.",
+      author: "Cícero Lucena",
+      role: "Prefeito de João Pessoa (PB)",
+      photo: "/cicero-lucena.png"
+    },
+    solution: [
+      "/projects/chat-ia-1.png",
+      "/projects/chat-ia-2.png",
+      "/projects/chat-ia-3.png",
+      "/projects/chat-ia-4.png"
+    ],
+    insights: [
+      {
+        metric: "100% do sistema acessível",
+        description: "Todo fluxo do app municipal disponível via conversa natural"
+      },
+      {
+        metric: "Configuração granular",
+        description: "6 camadas de configuração: tom, conhecimento, contexto, escopo, modelo e escalada"
+      },
+      {
+        metric: "Multi-ecossistema",
+        description: "Funciona em Cidade Conectada, Legislativo Conectado e qualquer contexto GovTech"
+      },
+      {
+        metric: "Métricas completas",
+        description: "458 interações, 76% aprovação, 59% adoção do chat, 734 tokens gastos"
+      }
+    ]
+  },
   "atlas-dashboard": {
     title: "Atlas Dashboard Financeiro",
     role: "Product Manager",

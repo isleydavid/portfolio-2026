@@ -117,6 +117,15 @@ export const projects: Project[] = [
     images: ["/projects/teleatendimento-1.png", "/projects/teleatendimento-2.png", "/projects/teleatendimento-4.png"]
   },
   {
+    title: "Chat IA Municipal",
+    role: "Product Manager",
+    company: "Cubo Tecnologia",
+    description: "Assistente IA contextual que permite cidadãos acessarem todo ecossistema municipal via conversa. Configuração de agentes, bloqueio de assuntos irrelevantes e adaptável a qualquer contexto GovTech.",
+    tags: ["IA Generativa", "ChatBot", "NLP"],
+    slug: "chat-ia-municipal",
+    images: ["/projects/chat-ia-1.png", "/projects/chat-ia-2.png", "/projects/chat-ia-3.png"]
+  },
+  {
     title: "Atlas Dashboard Financeiro",
     role: "Product Manager",
     company: "BPX / Lifters",
