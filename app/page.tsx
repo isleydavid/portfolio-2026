@@ -394,10 +394,10 @@ function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10 py-8">
-        <h1 className="text-4xl md:text-5xl font-bold mb-3 md:mb-4 leading-[1.1]">
+        <h1 className="text-4xl md:text-5xl font-semibold mb-3 md:mb-4 leading-[1.1]">
           {t("hero.greeting")}
         </h1>
-        <p className="text-4xl md:text-6xl font-bold mb-5 md:mb-6 leading-[1.1]" aria-label="David López Giraldo">
+        <p className="text-4xl md:text-6xl font-semibold mb-5 md:mb-6 leading-[1.1]" aria-label="David López Giraldo">
           {t("hero.name")}
         </p>
 
