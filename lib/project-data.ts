@@ -45,7 +45,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     testimonial: {
       quote: "Ele não apenas entregou um produto robusto, mas entendeu profundamente as necessidades do estado e como o Legislativo Conectado se integra ao ecossistema maior de soluções públicas. A capacidade dele em navegar complexidade governamental e estruturar soluções escaláveis foi excepcional.",
       author: "Jonathan Veras",
-      role: "Cubo Tecnologia",
+      role: "CEO, Cubo Tecnologia",
       photo: "/jonathan-veras.png"
     },
     strategy: [

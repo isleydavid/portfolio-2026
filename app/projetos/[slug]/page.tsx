@@ -52,15 +52,6 @@ export default function ProjectPage() {
       <ScrollProgress />
       <Header />
 
-      {/* Header Simples */}
-      <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-zinc-200">
-        <nav className="container mx-auto px-6 py-4">
-          <Link href="/" className="text-zinc-600 hover:text-zinc-900 transition-colors duration-300">
-            ← Voltar
-          </Link>
-        </nav>
-      </header>
-
       <main className="pt-20">
         {/* 1. Título + CTA + Metadata */}
         <section className="container mx-auto px-6 py-16 md:py-20">
@@ -144,33 +135,33 @@ export default function ProjectPage() {
           </section>
         )}
 
-        {/* 7. Testimonial */}
+        {/* 7. Testimonial - Snowhouse Style */}
         <section className="py-20 bg-zinc-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
-              <div className="flex flex-col md:flex-row gap-8 items-start">
-                {/* Foto */}
-                <div className="flex-shrink-0">
-                  <div className="w-24 h-24 rounded-full overflow-hidden bg-zinc-200">
-                    <Image
-                      src={testimonial.photo}
-                      alt={testimonial.author}
-                      width={96}
-                      height={96}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
+              {/* Quote */}
+              <blockquote className="text-lg md:text-xl text-zinc-900 leading-relaxed mb-8">
+                "{testimonial.quote}"
+              </blockquote>
 
-                {/* Quote */}
-                <div className="flex-1">
-                  <blockquote className="text-2xl md:text-3xl font-medium text-zinc-900 leading-relaxed mb-6">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  <div className="text-zinc-600">
-                    <p className="font-semibold text-zinc-900">{testimonial.author}</p>
-                    <p className="text-sm">{testimonial.role} at {testimonial.company}</p>
-                  </div>
+              {/* Author Info - Foto ao lado do nome */}
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-200 flex-shrink-0">
+                  <Image
+                    src={testimonial.photo}
+                    alt={testimonial.author}
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="font-semibold text-zinc-900 uppercase text-sm tracking-wide">
+                    {testimonial.author}
+                  </p>
+                  <p className="text-xs text-zinc-600 uppercase tracking-wider">
+                    {testimonial.role}
+                  </p>
                 </div>
               </div>
             </div>
