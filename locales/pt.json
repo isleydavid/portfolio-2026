@@ -1,0 +1,42 @@
+{
+  "header": {
+    "title": "Isley Giraldo",
+    "skipToContent": "Pular para o conteúdo principal"
+  },
+  "hero": {
+    "greeting": "OI, EU SOU",
+    "name": "DAVID LÓPEZ GIRALDO",
+    "location": "João Pessoa, Brasil",
+    "bio": "PRODUCT MANAGER & UX LEADER COM FOCO EM PRODUTOS DIGITAIS B2B, B2G E IGAMING."
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "intro1": "Profissional com formação em Administração de Empresas e Análise e Desenvolvimento de Sistemas, especializado na construção e gestão de produtos digitais em ambientes B2B, B2G e iGaming.",
+    "intro2": "Com experiência em liderança de squads multidisciplinares e aplicação de metodologias ágeis (Scrum, Kanban), atuo na interseção entre produto, design e tecnologia, utilizando IA generativa para otimizar processos de discovery, documentação e automação.",
+    "education": "Formação",
+    "skills": "Habilidades & Certificações"
+  },
+  "projects": {
+    "title": "PROJETOS RECENTES.",
+    "intro": "Tenho me envolvido em uma variedade de projetos recentemente, criando histórias, desenhando interfaces e desenvolvendo experiências digitais. Meu trabalho recente reflete meu compromisso em ajudar clientes a alcançar seus objetivos.",
+    "viewAll": "VER TODOS",
+    "viewProject": "VER PROJETO"
+  },
+  "achievements": {
+    "title": "Conquistas"
+  },
+  "journey": {
+    "title": "Minha Trajetória",
+    "current": "Atual"
+  },
+  "cta": {
+    "title": "VAMOS FALAR SOBRE SEU PRODUTO.",
+    "button": "MARQUE UMA REUNIÃO"
+  },
+  "footer": {
+    "journey": "TRAJETÓRIA",
+    "projects": "PROJETOS",
+    "contact": "CONTATO",
+    "copyright": "© 2026 David López Giraldo"
+  }
+}

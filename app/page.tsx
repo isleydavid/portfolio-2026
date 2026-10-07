@@ -9,20 +9,25 @@ import { BackToTop } from "@/components/BackToTop";
 import { BottomNav } from "@/components/BottomNav";
 import { ProjectTag } from "@/components/ProjectTag";
 import { InfiniteCarousel } from "@/components/InfiniteCarousel";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-neutral-50 text-zinc-900">
       <ScrollProgress />
 
       <a href="#main-content" className="skip-link">
-        Pular para o conteúdo principal
+        {t("header.skipToContent")}
       </a>
 
       {/* Header - Simple top bar */}
       <header className="fixed top-0 w-full bg-zinc-900/20 backdrop-blur-md z-50 border-b border-zinc-400/30 shadow-lg">
-        <nav className="container mx-auto px-6 py-4" aria-label="Navegação principal">
-          <Link href="/" className="text-xl font-bold text-white">Isley Giraldo</Link>
+        <nav className="container mx-auto px-6 py-4 flex items-center justify-between" aria-label="Navegação principal">
+          <Link href="/" className="text-xl font-bold text-white">{t("header.title")}</Link>
+          <LanguageSelector />
         </nav>
       </header>
 
@@ -38,19 +43,16 @@ export default function Home() {
         {/* Sobre Mim */}
         <section className="py-20 md:py-24 bg-white" aria-labelledby="sobre-heading">
           <div className="container mx-auto px-6 max-w-4xl">
-            <h2 id="sobre-heading" className="text-4xl md:text-5xl font-bold mb-12 text-zinc-900">Sobre Mim</h2>
+            <h2 id="sobre-heading" className="text-4xl md:text-5xl font-bold mb-12 text-zinc-900">{t("about.title")}</h2>
             <div className="space-y-6 text-zinc-700">
               <p className="text-lg leading-relaxed">
-                Profissional com formação em Administração de Empresas e Análise e Desenvolvimento de Sistemas,
-                especializado na construção e gestão de produtos digitais em ambientes B2B, B2G e iGaming.
+                {t("about.intro1")}
               </p>
               <p className="leading-relaxed">
-                Com experiência em liderança de squads multidisciplinares e aplicação de metodologias ágeis
-                (Scrum, Kanban), atuo na interseção entre produto, design e tecnologia, utilizando IA generativa
-                para otimizar processos de discovery, documentação e automação.
+                {t("about.intro2")}
               </p>
               <div className="pt-6">
-                <h3 className="text-2xl font-semibold mb-6 text-zinc-900">Formação</h3>
+                <h3 className="text-2xl font-semibold mb-6 text-zinc-900">{t("about.education")}</h3>
                 <ul className="space-y-2 text-zinc-600">
                   {bio.education.map((edu, i) => (
                     <li key={i}>• {edu}</li>
@@ -58,7 +60,7 @@ export default function Home() {
                 </ul>
               </div>
               <div className="pt-6">
-                <h3 className="text-2xl font-semibold mb-6 text-zinc-900">Habilidades & Certificações</h3>
+                <h3 className="text-2xl font-semibold mb-6 text-zinc-900">{t("about.skills")}</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   {skills.map((skill, i) => (
                     <div key={i}>
@@ -93,7 +95,7 @@ export default function Home() {
             {/* Título CTA + Botão */}
             <div className="flex flex-col md:flex-row items-center justify-between mb-16 bg-white rounded-3xl p-8 md:p-12">
               <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-6 md:mb-0">
-                LET'S TALK ABOUT YOUR PRODUCT.
+                {t("cta.title")}
               </h2>
               <a
                 href="mailto:idlopezgiraldo.dlg@gmail.com"
@@ -102,7 +104,7 @@ export default function Home() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
-                SCHEDULE A CALL
+                {t("cta.button")}
               </a>
             </div>
 
@@ -152,11 +154,11 @@ export default function Home() {
             <div className="border-t border-zinc-300 pt-8">
               <div className="flex flex-col md:flex-row justify-between items-center text-sm">
                 <div className="flex flex-wrap gap-x-6 gap-y-2 mb-4 md:mb-0">
-                  <a href="#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">TRAJETÓRIA</a>
-                  <a href="#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">PROJETOS</a>
-                  <a href="mailto:idlopezgiraldo.dlg@gmail.com" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">CONTATO</a>
+                  <a href="#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">{t("footer.journey")}</a>
+                  <a href="#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">{t("footer.projects")}</a>
+                  <a href="mailto:idlopezgiraldo.dlg@gmail.com" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">{t("footer.contact")}</a>
                 </div>
-                <p className="text-zinc-500">© 2026 David López Giraldo</p>
+                <p className="text-zinc-500">{t("footer.copyright")}</p>
               </div>
             </div>
           </div>
@@ -210,13 +212,15 @@ function TimelineItem({ year, period, title, company, description, current = fal
   description?: string;
   current?: boolean;
 }) {
+  const { t } = useLanguage();
+
   return (
     <div className="flex gap-4 md:gap-6 items-start">
       <div className="text-zinc-500 font-mono text-sm md:text-base w-16 md:w-20 flex-shrink-0">{year}</div>
       <div className="flex-1">
         <h3 className="text-xl md:text-2xl font-semibold mb-2 text-zinc-900 leading-[1.2]">{title}</h3>
         <p className="text-zinc-600 text-sm md:text-base mb-2 font-medium">
-          {company} {current && <span className="ml-2 px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-xs font-medium">Atual</span>}
+          {company} {current && <span className="ml-2 px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-xs font-medium">{t("journey.current")}</span>}
         </p>
         <p className="text-zinc-500 text-sm md:text-base mb-2">{period}</p>
         {description && <p className="text-zinc-600 text-sm md:text-base leading-[1.5]">{description}</p>}
@@ -235,6 +239,7 @@ function ProjectCard({ title, role, company, description, tags, image, images, s
   images?: string[];
   slug?: string;
 }) {
+  const { t } = useLanguage();
   const [currentImage, setCurrentImage] = useState(0);
   const [isInView, setIsInView] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -331,7 +336,7 @@ function ProjectCard({ title, role, company, description, tags, image, images, s
                 }}
               >
                 <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-lg shadow-xl whitespace-nowrap">
-                  <span className="text-zinc-900 font-semibold uppercase tracking-wider text-sm">VIEW PROJECT</span>
+                  <span className="text-zinc-900 font-semibold uppercase tracking-wider text-sm">{t("projects.viewProject")}</span>
                   <svg className="w-4 h-4 text-zinc-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -378,6 +383,7 @@ function AchievementCard({ title, description, metric }: {
 // Enhanced sections with scroll animations
 function HeroSection() {
   const parallaxRef = useParallax();
+  const { t } = useLanguage();
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-black text-white relative overflow-hidden animated-gradient-bg" aria-label="Introdução">
@@ -395,10 +401,10 @@ function HeroSection() {
 
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10 py-8">
         <h1 className="text-4xl md:text-5xl font-bold mb-3 md:mb-4 leading-[1.1]">
-          HI, I AM
+          {t("hero.greeting")}
         </h1>
         <p className="text-4xl md:text-6xl font-bold mb-5 md:mb-6 leading-[1.1]" aria-label="David López Giraldo">
-          DAVID LÓPEZ GIRALDO
+          {t("hero.name")}
         </p>
 
         <div className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-5 md:mb-6 overflow-hidden rounded-full relative z-20">
@@ -411,9 +417,9 @@ function HeroSection() {
             priority
           />
         </div>
-        <p className="text-zinc-300 text-sm md:text-base mb-3 md:mb-4 relative z-10">{bio.location}</p>
+        <p className="text-zinc-300 text-sm md:text-base mb-3 md:mb-4 relative z-10">{t("hero.location")}</p>
         <p className="text-sm md:text-base text-zinc-200 max-w-2xl mx-auto leading-[1.6] relative z-10 px-4">
-          {bio.intro}
+          {t("hero.bio")}
         </p>
       </div>
     </section>
@@ -423,6 +429,7 @@ function HeroSection() {
 function TrajetoriaSection() {
   const headingRef = useScrollReveal();
   const timelineRef = useScrollReveal();
+  const { t } = useLanguage();
 
   return (
     <section id="trajetoria" className="py-12 md:py-16 lg:py-24 bg-zinc-50" aria-labelledby="trajetoria-heading">
@@ -432,7 +439,7 @@ function TrajetoriaSection() {
           id="trajetoria-heading"
           className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-zinc-900 apple-fade"
         >
-          Minha Trajetória
+          {t("journey.title")}
         </h2>
         <div
           ref={timelineRef as any}
@@ -450,6 +457,7 @@ function TrajetoriaSection() {
 function ProjetosSection() {
   const headingRef = useScrollReveal();
   const gridRef = useScrollReveal();
+  const { t } = useLanguage();
 
   return (
     <section id="projetos" className="py-12 md:py-16 lg:py-24 bg-white" aria-labelledby="projetos-heading">
@@ -461,17 +469,17 @@ function ProjetosSection() {
             id="projetos-heading"
             className="text-4xl md:text-5xl font-bold mb-6 md:mb-8 text-zinc-900 leading-[1.2]"
           >
-            RECENT PROJECTS.
+            {t("projects.title")}
           </h2>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6">
             <p className="text-zinc-600 text-sm md:text-base leading-relaxed max-w-2xl">
-              Tenho me envolvido em uma variedade de projetos recentemente, criando histórias, desenhando interfaces e desenvolvendo experiências digitais. Meu trabalho recente reflete meu compromisso em ajudar clientes a alcançar seus objetivos.
+              {t("projects.intro")}
             </p>
             <Link
               href="/#projetos"
               className="text-zinc-900 font-semibold uppercase tracking-wider text-xs md:text-sm underline underline-offset-4 hover:text-blue-600 transition-colors whitespace-nowrap"
             >
-              VIEW ALL
+              {t("projects.viewAll")}
             </Link>
           </div>
         </div>
@@ -493,6 +501,7 @@ function ProjetosSection() {
 function ConquistasSection() {
   const headingRef = useScrollReveal();
   const gridRef = useScrollReveal();
+  const { t } = useLanguage();
 
   return (
     <section className="py-12 md:py-16 lg:py-24 bg-zinc-50" aria-labelledby="conquistas-heading">
@@ -502,7 +511,7 @@ function ConquistasSection() {
           id="conquistas-heading"
           className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-zinc-900 apple-scale leading-[1.2]"
         >
-          Conquistas
+          {t("achievements.title")}
         </h2>
         <div
           ref={gridRef as any}
