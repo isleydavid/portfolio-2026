@@ -59,7 +59,7 @@ export default function ProjectPage() {
         <section className="container mx-auto px-6 py-16 md:py-20">
           <div className="max-w-4xl">
             {/* Título */}
-            <h1 className="text-4xl md:text-6xl font-bold text-zinc-900 mb-8">
+            <h1 className="text-3xl md:text-6xl font-bold text-zinc-900 mb-8 break-words">
               {project.title}
             </h1>
 
