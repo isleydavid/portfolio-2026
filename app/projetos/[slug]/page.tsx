@@ -8,19 +8,21 @@ import { projects } from "@/lib/data";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
 import { Header } from "@/components/Header";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ProjectPage() {
   const params = useParams();
   const slug = params.slug as string;
   const project = projectDetails[slug];
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
+  const { t } = useLanguage();
 
   if (!project) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-zinc-900 mb-4">Projeto não encontrado</h1>
-          <Link href="/" className="text-zinc-600 hover:text-zinc-900">← Voltar para home</Link>
+          <h1 className="text-2xl font-bold text-zinc-900 mb-4">{t("projectDetail.notFound")}</h1>
+          <Link href="/" className="text-zinc-600 hover:text-zinc-900">{t("projectDetail.backHome")}</Link>
         </div>
       </div>
     );
@@ -69,7 +71,7 @@ export default function ProjectPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300 mb-8"
               >
-                Ver projeto ao vivo
+                {t("projectDetail.viewLive")}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
@@ -80,13 +82,13 @@ export default function ProjectPage() {
             <div className="space-y-6 mb-12">
               {/* INDUSTRY */}
               <div>
-                <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">INDUSTRY</h3>
+                <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">{t("projectDetail.industry")}</h3>
                 <p className="text-sm text-zinc-700">{metadata.industry}</p>
               </div>
 
               {/* SERVICES */}
               <div>
-                <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">SERVICES</h3>
+                <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">{t("projectDetail.services")}</h3>
                 <div className="flex flex-wrap gap-2">
                   {metadata.services.map((service, i) => (
                     <span key={i} className="px-3 py-1.5 bg-red-500 text-white rounded text-xs font-semibold uppercase tracking-wider">
@@ -172,7 +174,7 @@ export default function ProjectPage() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-12 text-center">
-              Processo
+              {t("projectDetail.process")}
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
               {processStages.map((stage, i) => (

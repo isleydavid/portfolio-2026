@@ -38,5 +38,13 @@
     "projects": "PROJECTS",
     "contact": "CONTACT",
     "copyright": "© 2026 David López Giraldo"
+  },
+  "projectDetail": {
+    "industry": "INDUSTRY",
+    "services": "SERVICES",
+    "viewLive": "View live project",
+    "process": "Process",
+    "notFound": "Project not found",
+    "backHome": "← Back to home"
   }
 }

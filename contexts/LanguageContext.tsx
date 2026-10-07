@@ -22,11 +22,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       .catch(() => setTranslations({}));
   }, [language]);
 
-  // Save language preference to localStorage
+  // Load language preference from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem("portfolio-language") as Language;
-    if (saved && ["pt", "en", "es"].includes(saved)) {
-      setLanguageState(saved);
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem("portfolio-language") as Language;
+      if (saved && ["pt", "en", "es"].includes(saved)) {
+        setLanguageState(saved);
+      }
     }
   }, []);
 
