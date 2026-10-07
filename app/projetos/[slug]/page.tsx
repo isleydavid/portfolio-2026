@@ -85,19 +85,25 @@ export default function ProjectPage() {
               </a>
             )}
 
-            {/* Metadata Tags */}
-            <div className="flex flex-wrap gap-3 mb-12">
-              <span className="px-4 py-2 bg-zinc-100 text-zinc-700 rounded-full text-sm font-medium">
-                <span className="text-zinc-500">Indústria:</span> {metadata.industry}
-              </span>
-              {metadata.services.map((service, i) => (
-                <span key={i} className="px-4 py-2 bg-zinc-100 text-zinc-700 rounded-full text-sm font-medium">
-                  {service}
-                </span>
-              ))}
-              <span className="px-4 py-2 bg-zinc-100 text-zinc-700 rounded-full text-sm font-medium">
-                {metadata.year}
-              </span>
+            {/* Metadata - Snowhouse Style */}
+            <div className="space-y-6 mb-12">
+              {/* INDUSTRY */}
+              <div>
+                <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">INDUSTRY</h3>
+                <p className="text-sm text-zinc-700">{metadata.industry}</p>
+              </div>
+
+              {/* SERVICES */}
+              <div>
+                <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">SERVICES</h3>
+                <div className="flex flex-wrap gap-2">
+                  {metadata.services.map((service, i) => (
+                    <span key={i} className="px-3 py-1.5 bg-red-500 text-white rounded text-xs font-semibold uppercase tracking-wider">
+                      {service}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* 5. Overview */}
