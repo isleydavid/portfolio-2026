@@ -7,6 +7,7 @@ import { projectDetails } from "@/lib/project-data";
 import { projects } from "@/lib/data";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
+import { Header } from "@/components/Header";
 
 export default function ProjectPage() {
   const params = useParams();
@@ -49,6 +50,7 @@ export default function ProjectPage() {
   return (
     <div className="min-h-screen bg-white">
       <ScrollProgress />
+      <Header />
 
       {/* Header Simples */}
       <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-zinc-200">
