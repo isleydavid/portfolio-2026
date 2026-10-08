@@ -9,10 +9,6 @@ export function InfiniteCarousel() {
 
   return (
     <div className="w-full overflow-hidden bg-white py-8 md:py-12">
-      <div className="mb-6 md:mb-8">
-        <h3 className="text-xl md:text-2xl font-bold text-center text-zinc-900">Projetos em Destaque</h3>
-      </div>
-
       <div className="relative">
         {/* Gradientes de fade nas bordas */}
         <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />

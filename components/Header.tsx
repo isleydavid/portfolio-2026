@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
   const languages = [
@@ -21,15 +22,20 @@ export function Header() {
     { href: "mailto:idlopezgiraldo.dlg@gmail.com", label: "footer.contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-zinc-200 shadow-sm">
-        <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-zinc-900">
-            {t("header.title")}
-          </Link>
-
-          {/* Menu Hamburguer */}
+      {/* Mobile: absolute (não fixed) | Desktop: normal flow */}
+      <header className="absolute md:relative top-0 w-full bg-transparent md:bg-white z-50 md:z-auto">
+        <nav className="container mx-auto px-6 py-3 md:py-6 flex items-center justify-end">
+          {/* Menu Hamburguer - em ambos mobile e desktop */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="p-2 hover:bg-zinc-100 rounded-lg transition-colors"

@@ -6,7 +6,6 @@ import { useState, useEffect, useRef } from "react";
 import { useScrollReveal, useParallax } from "@/hooks/useScrollReveal";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
-import { BottomNav } from "@/components/BottomNav";
 import { ProjectTag } from "@/components/ProjectTag";
 import { InfiniteCarousel } from "@/components/InfiniteCarousel";
 import { Header } from "@/components/Header";
@@ -24,8 +23,6 @@ export default function Home() {
       </a>
 
       <Header />
-
-      <BottomNav />
 
       <main id="main-content">
         {/* Hero */}
@@ -376,45 +373,79 @@ function AchievementCard({ title, description, metric }: {
 
 // Enhanced sections with scroll animations
 function HeroSection() {
-  const parallaxRef = useParallax();
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-black text-white relative overflow-hidden animated-gradient-bg" aria-label="Introdução">
-      {/* ponytail: background text repetitions - subtle, behind with parallax */}
-      <div
-        ref={parallaxRef}
-        className="absolute inset-0 flex flex-col items-center justify-center gap-4 md:gap-8 pointer-events-none select-none opacity-15 parallax-bg"
-        aria-hidden="true"
-      >
-        <p className="text-5xl md:text-9xl font-bold text-zinc-600 whitespace-nowrap">DAVID LOPEZ</p>
-        <p className="text-5xl md:text-9xl font-bold text-zinc-600 whitespace-nowrap">DAVID LOPEZ</p>
-        <p className="text-5xl md:text-9xl font-bold text-zinc-600 whitespace-nowrap">DAVID LOPEZ</p>
-        <p className="text-5xl md:text-9xl font-bold text-zinc-600 whitespace-nowrap">DAVID LOPEZ</p>
+    <section className="h-screen md:h-[90vh] bg-white pt-12 md:pt-4 pb-6 md:pb-4 relative flex flex-col md:flex md:items-center md:justify-center" aria-label="Introdução">
+      <div className="container mx-auto px-6 md:px-8 max-w-6xl relative z-10 flex-1 flex flex-col md:grid md:grid-cols-[1.2fr_1fr] md:gap-12 lg:gap-16 md:items-center md:h-full">
+        <div className="md:pr-8">
+          {/* Título: Desktop reduzido, centralizado */}
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-zinc-900 mb-4 md:mb-3 leading-[1.0] tracking-[-0.02em] uppercase">
+            {t("hero.greeting")}
+            <span className="text-blue-600">.</span>
+            <br />
+            {t("hero.name")}
+            <span className="text-red-500">.</span>
+          </h1>
+
+          {/* Parágrafo: Desktop compacto */}
+          <p className="text-sm md:text-sm lg:text-base font-normal text-zinc-600 mb-5 md:mb-4 leading-[1.4]">
+            {t("hero.bio")}
+          </p>
+
+          {/* Botão CTA - Desktop apenas */}
+          <a
+            href="mailto:idlopezgiraldo.dlg@gmail.com"
+            className="hidden md:inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 hover:gap-4 uppercase tracking-wider text-[13.7px]"
+          >
+            {t("cta.button")}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Foto profissional com formas geométricas CONTIDAS */}
+        {/* Desktop: grid col 2 | Mobile: relative abaixo */}
+        <div className="relative w-52 md:w-full md:max-h-[65vh] h-auto mx-auto md:mx-0 mb-5 md:mb-0 flex items-center overflow-visible" aria-hidden="true">
+          {/* Container com overflow-hidden para conter as formas */}
+          <div className="relative w-full overflow-hidden rounded-xl md:rounded-2xl">
+            {/* Formas geométricas DENTRO do container */}
+            {/* Triângulo amarelo - posicionado dentro */}
+            <div className="absolute z-0 top-0 right-0 w-0 h-0 border-l-[60px] md:border-l-[100px] border-l-transparent border-r-[60px] md:border-r-[100px] border-r-transparent border-b-[120px] md:border-b-[200px] border-b-yellow-400"></div>
+
+            {/* Círculo azul - posicionado dentro */}
+            <div className="absolute z-0 bottom-4 left-4 md:bottom-8 md:left-8 w-20 h-20 md:w-32 md:h-32 rounded-full bg-blue-500 opacity-70"></div>
+
+            {/* Forma orgânica rosa/coral - posicionada dentro */}
+            <div className="absolute z-0 bottom-16 left-16 md:bottom-24 md:left-24 w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-400 opacity-50"></div>
+
+            {/* Container da foto com borda laranja */}
+            <div className="relative z-10 rounded-xl md:rounded-2xl overflow-hidden border-4 md:border-8 border-[#CC785C] bg-white shadow-xl md:shadow-2xl">
+              <Image
+                src="/david-office.png"
+                alt="David López Giraldo no escritório"
+                width={1024}
+                height={768}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 text-center relative z-10 py-8">
-        <h1 className="text-4xl md:text-5xl font-semibold mb-3 md:mb-4 leading-[1.1]">
-          {t("hero.greeting")}
-        </h1>
-        <p className="text-4xl md:text-6xl font-semibold mb-5 md:mb-6 leading-[1.1]" aria-label="David López Giraldo">
-          {t("hero.name")}
-        </p>
-
-        <div className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-5 md:mb-6 overflow-hidden rounded-full relative z-20">
-          <Image
-            src="/david-cubo.jpg"
-            alt="David López Giraldo na Cubo - Product Manager"
-            width={288}
-            height={288}
-            className="w-full h-full object-cover"
-            priority
-          />
-        </div>
-        <p className="text-zinc-300 text-sm md:text-base mb-3 md:mb-4 relative z-10">{t("hero.location")}</p>
-        <p className="text-sm md:text-base text-zinc-200 max-w-2xl mx-auto leading-[1.6] relative z-10 px-4">
-          {t("hero.bio")}
-        </p>
+      {/* Botão CTA - Mobile apenas, depois da foto: Aeonik Fono Medium */}
+      <div className="container mx-auto px-6 max-w-6xl md:hidden">
+        <a
+          href="mailto:idlopezgiraldo.dlg@gmail.com"
+          className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 hover:gap-4 uppercase tracking-wider text-[13.7px]"
+        >
+          {t("cta.button")}
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
     </section>
   );

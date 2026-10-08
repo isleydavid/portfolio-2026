@@ -481,22 +481,22 @@ html {
   }
 }
 
-/* Mobile - 10% mais rápido (36s ao invés de 40s) */
+/* Mobile - 44% mais rápido (30% adicional sobre os 20% anteriores) */
 .animate-scroll-right-mobile {
-  animation: scroll-right 36s linear infinite;
+  animation: scroll-right 20.16s linear infinite;
 }
 
 .animate-scroll-left-mobile {
-  animation: scroll-left 36s linear infinite;
+  animation: scroll-left 20.16s linear infinite;
 }
 
-/* Desktop - velocidade normal */
+/* Desktop - 44% mais rápido (30% adicional sobre os 20% anteriores: 32s * 0.7 = 22.4s) */
 .animate-scroll-right {
-  animation: scroll-right 40s linear infinite;
+  animation: scroll-right 22.4s linear infinite;
 }
 
 .animate-scroll-left {
-  animation: scroll-left 40s linear infinite;
+  animation: scroll-left 22.4s linear infinite;
 }
 
 .hover\:pause-animation:hover {
