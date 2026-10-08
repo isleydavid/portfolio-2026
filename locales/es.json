@@ -44,6 +44,8 @@
     "services": "SERVICIOS",
     "viewLive": "Ver proyecto en vivo",
     "process": "Proceso",
+    "desktopViews": "INTERFAZ ESCRITORIO",
+    "mobileViews": "INTERFAZ MÓVIL",
     "notFound": "Proyecto no encontrado",
     "backHome": "← Volver al inicio"
   }

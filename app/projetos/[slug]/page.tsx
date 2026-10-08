@@ -118,17 +118,43 @@ export default function ProjectPage() {
           </div>
         </section>
 
-        {/* 6. Grid Gallery 3x3 */}
+        {/* 6. Grid Gallery Desktop - 3x3 */}
         {project.solution && Array.isArray(project.solution) && project.solution.length > 0 && (
           <section className="container mx-auto px-6 py-12 md:py-16">
+            <h2 className="text-2xl md:text-3xl font-medium text-zinc-900 mb-8 uppercase tracking-[-0.02em]">
+              {t("projectDetail.desktopViews")}
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {project.solution.map((image, i) => (
                 <div key={i} className="bg-zinc-100 rounded-xl overflow-hidden group">
                   <Image
                     src={image}
-                    alt={`${project.title} - Screenshot ${i + 1}`}
+                    alt={`${project.title} - Desktop Screenshot ${i + 1}`}
                     width={800}
                     height={600}
+                    loading="lazy"
+                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 6b. Grid Gallery Mobile - 4 colunas */}
+        {project.mobileImages && Array.isArray(project.mobileImages) && project.mobileImages.length > 0 && (
+          <section className="container mx-auto px-6 py-12 md:py-16 bg-zinc-50">
+            <h2 className="text-2xl md:text-3xl font-medium text-zinc-900 mb-8 uppercase tracking-[-0.02em]">
+              {t("projectDetail.mobileViews")}
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {project.mobileImages.map((image, i) => (
+                <div key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                  <Image
+                    src={image}
+                    alt={`${project.title} - Mobile Screenshot ${i + 1}`}
+                    width={400}
+                    height={800}
                     loading="lazy"
                     className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
                   />

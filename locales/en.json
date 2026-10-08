@@ -44,6 +44,8 @@
     "services": "SERVICES",
     "viewLive": "View live project",
     "process": "Process",
+    "desktopViews": "DESKTOP INTERFACE",
+    "mobileViews": "MOBILE INTERFACE",
     "notFound": "Project not found",
     "backHome": "← Back to home"
   }

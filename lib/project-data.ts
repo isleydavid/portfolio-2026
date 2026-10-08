@@ -18,6 +18,7 @@ export interface ProjectDetail {
     }[];
   };
   solution?: string[];
+  mobileImages?: string[];
   insights?: {
     metric: string;
     description: string;
@@ -363,6 +364,12 @@ export const projectDetails: Record<string, ProjectDetail> = {
       "/projects/chat-ia-2.png",
       "/projects/chat-ia-3.png",
       "/projects/chat-ia-4.png"
+    ],
+    mobileImages: [
+      "/projects/chat-ia-5.png",
+      "/projects/chat-ia-6.png",
+      "/projects/chat-ia-7.png",
+      "/projects/chat-ia-8.png"
     ],
     insights: [
       {
