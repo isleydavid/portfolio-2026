@@ -123,7 +123,16 @@ export const projects: Project[] = [
     description: "Assistente IA contextual que permite cidadãos acessarem todo ecossistema municipal via conversa. Configuração de agentes, bloqueio de assuntos irrelevantes e adaptável a qualquer contexto GovTech.",
     tags: ["IA Generativa", "ChatBot", "NLP"],
     slug: "chat-ia-municipal",
-    images: ["/projects/chat-ia-1.png", "/projects/chat-ia-2.png", "/projects/chat-ia-3.png"]
+    images: [
+      "/projects/chat-ia-1.png",
+      "/projects/chat-ia-2.png",
+      "/projects/chat-ia-3.png",
+      "/projects/chat-ia-4.png",
+      "/projects/chat-ia-5.png",
+      "/projects/chat-ia-6.png",
+      "/projects/chat-ia-7.png",
+      "/projects/chat-ia-8.png"
+    ]
   },
   {
     title: "Atlas Dashboard Financeiro",
