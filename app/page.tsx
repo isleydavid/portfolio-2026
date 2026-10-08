@@ -6,6 +6,8 @@ import { useState, useEffect, useRef } from "react";
 import { useScrollReveal, useParallax } from "@/hooks/useScrollReveal";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollAnimationObserver } from "@/components/ScrollAnimationObserver";
+import { SoundWrapper } from "@/components/SoundWrapper";
+import { SoundToggle } from "@/components/SoundToggle";
 import { BackToTop } from "@/components/BackToTop";
 import { ProjectTag } from "@/components/ProjectTag";
 import { InfiniteCarousel } from "@/components/InfiniteCarousel";
@@ -16,15 +18,17 @@ export default function Home() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-neutral-50 text-zinc-900">
-      <ScrollProgress />
-      <ScrollAnimationObserver />
+    <SoundWrapper>
+      <div className="min-h-screen bg-neutral-50 text-zinc-900">
+        <ScrollProgress />
+        <ScrollAnimationObserver />
+        <SoundToggle />
 
-      <a href="#main-content" className="skip-link">
-        {t("header.skipToContent")}
-      </a>
+        <a href="#main-content" className="skip-link">
+          {t("header.skipToContent")}
+        </a>
 
-      <Header />
+        <Header />
 
       <main id="main-content">
         {/* Hero */}
@@ -203,7 +207,8 @@ export default function Home() {
       </footer>
 
       <BackToTop />
-    </div>
+      </div>
+    </SoundWrapper>
   );
 }
 
