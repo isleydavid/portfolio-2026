@@ -19,21 +19,22 @@ export function InfiniteCarousel() {
           {duplicatedProjects.map((project, i) => (
             <div
               key={`row1-${i}`}
-              className="flex-shrink-0 w-48 md:w-80 bg-white rounded-lg md:rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-105 transition-all duration-400 overflow-hidden group cursor-pointer"
+              className="flex-shrink-0 w-48 md:w-80 bg-white rounded-lg md:rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-[1.02] transition-all duration-300 overflow-hidden group cursor-pointer active:scale-100"
             >
               {project.images && project.images[0] && (
-                <div className="w-full h-28 md:h-48 overflow-hidden bg-zinc-100">
+                <div className="w-full h-28 md:h-48 overflow-hidden bg-zinc-100 relative">
                   <Image
                     src={project.images[0]}
                     alt={project.title}
                     width={320}
                     height={192}
-                    className="w-full h-full object-cover group-hover:scale-110 group-hover:brightness-110 transition-all duration-400"
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-110 group-hover:brightness-110 transition-all duration-300"
                   />
                 </div>
               )}
               <div className="p-3 md:p-5">
-                <h4 className="font-semibold text-zinc-900 text-xs md:text-sm mb-1 group-hover:text-blue-600 transition-colors duration-300">
+                <h4 className="font-medium text-zinc-900 text-xs md:text-sm mb-1 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-200">
                   {project.title}
                 </h4>
                 <p className="text-zinc-500 text-[10px] md:text-xs">{project.company}</p>
@@ -52,21 +53,22 @@ export function InfiniteCarousel() {
             return (
               <div
                 key={`row2-${i}`}
-                className="flex-shrink-0 w-48 md:w-80 bg-white rounded-lg md:rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-105 transition-all duration-400 overflow-hidden group cursor-pointer"
+                className="flex-shrink-0 w-48 md:w-80 bg-white rounded-lg md:rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-[1.02] transition-all duration-300 overflow-hidden group cursor-pointer active:scale-100"
               >
                 {imageToShow && (
-                  <div className="w-full h-28 md:h-48 overflow-hidden bg-zinc-100">
+                  <div className="w-full h-28 md:h-48 overflow-hidden bg-zinc-100 relative">
                     <Image
                       src={imageToShow}
                       alt={project.title}
                       width={320}
                       height={192}
-                      className="w-full h-full object-cover group-hover:scale-110 group-hover:brightness-110 transition-all duration-400"
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-110 group-hover:brightness-110 transition-all duration-300"
                     />
                   </div>
                 )}
                 <div className="p-3 md:p-5">
-                  <h4 className="font-semibold text-zinc-900 text-xs md:text-sm mb-1 group-hover:text-blue-600 transition-colors duration-300">
+                  <h4 className="font-medium text-zinc-900 text-xs md:text-sm mb-1 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-200">
                     {project.title}
                   </h4>
                   <p className="text-zinc-500 text-[10px] md:text-xs">{project.company}</p>

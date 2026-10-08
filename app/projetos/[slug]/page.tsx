@@ -54,12 +54,12 @@ export default function ProjectPage() {
       <ScrollProgress />
       <Header />
 
-      <main className="pt-20">
+      <main className="pt-16 md:pt-20">
         {/* 1. Título + CTA + Metadata */}
-        <section className="container mx-auto px-6 py-16 md:py-20">
+        <section className="container mx-auto px-6 py-12 md:py-16">
           <div className="max-w-4xl">
             {/* Título */}
-            <h1 className="text-3xl md:text-6xl font-bold text-zinc-900 mb-8 break-words">
+            <h1 className="text-3xl md:text-5xl font-medium text-zinc-900 mb-6 md:mb-8 break-words uppercase tracking-[-0.02em] leading-[1.1]">
               {project.title}
             </h1>
 
@@ -69,7 +69,7 @@ export default function ProjectPage() {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300 mb-8"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg mb-8 uppercase tracking-wider text-sm"
               >
                 {t("projectDetail.viewLive")}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,19 +79,19 @@ export default function ProjectPage() {
             )}
 
             {/* Metadata - Snowhouse Style */}
-            <div className="space-y-6 mb-12">
+            <div className="space-y-6 mb-10">
               {/* INDUSTRY */}
               <div>
-                <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">{t("projectDetail.industry")}</h3>
+                <h3 className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">{t("projectDetail.industry")}</h3>
                 <p className="text-sm text-zinc-700">{metadata.industry}</p>
               </div>
 
               {/* SERVICES */}
               <div>
-                <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">{t("projectDetail.services")}</h3>
+                <h3 className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">{t("projectDetail.services")}</h3>
                 <div className="flex flex-wrap gap-2">
                   {metadata.services.map((service, i) => (
-                    <span key={i} className="px-3 py-1.5 bg-red-500 text-white rounded text-xs font-semibold uppercase tracking-wider">
+                    <span key={i} className="px-3 py-1.5 bg-red-500 text-white rounded text-xs font-medium uppercase tracking-wider">
                       {service}
                     </span>
                   ))}
@@ -100,17 +100,17 @@ export default function ProjectPage() {
             </div>
 
             {/* 5. Overview */}
-            <div className="prose prose-lg max-w-none text-zinc-700 space-y-6">
-              <p className="text-xl leading-relaxed">
+            <div className="space-y-6 text-zinc-700">
+              <p className="text-base md:text-lg leading-relaxed">
                 {project.description}
               </p>
               {project.challenge && (
-                <p className="leading-relaxed">
-                  <strong>Desafio:</strong> {project.challenge}
+                <p className="text-base leading-relaxed">
+                  <strong className="font-medium text-zinc-900">Desafio:</strong> {project.challenge}
                 </p>
               )}
               {project.solution && project.solution[0] && (
-                <p className="leading-relaxed">
+                <p className="text-base leading-relaxed">
                   {project.solution[0]}
                 </p>
               )}
@@ -120,16 +120,17 @@ export default function ProjectPage() {
 
         {/* 6. Grid Gallery 3x3 */}
         {project.solution && Array.isArray(project.solution) && project.solution.length > 0 && (
-          <section className="container mx-auto px-6 py-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <section className="container mx-auto px-6 py-12 md:py-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {project.solution.map((image, i) => (
-                <div key={i} className="bg-zinc-100 rounded-xl overflow-hidden">
+                <div key={i} className="bg-zinc-100 rounded-xl overflow-hidden group">
                   <Image
                     src={image}
                     alt={`${project.title} - Screenshot ${i + 1}`}
                     width={800}
                     height={600}
-                    className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
                   />
                 </div>
               ))}
@@ -138,11 +139,11 @@ export default function ProjectPage() {
         )}
 
         {/* 7. Testimonial - Snowhouse Style */}
-        <section className="py-20 bg-zinc-50">
+        <section className="py-12 md:py-16 bg-zinc-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               {/* Quote */}
-              <blockquote className="text-lg md:text-xl text-zinc-900 leading-relaxed mb-8">
+              <blockquote className="text-base md:text-lg text-zinc-900 leading-relaxed mb-6">
                 "{testimonial.quote}"
               </blockquote>
 
@@ -154,11 +155,12 @@ export default function ProjectPage() {
                     alt={testimonial.author}
                     width={48}
                     height={48}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div>
-                  <p className="font-semibold text-zinc-900 uppercase text-sm tracking-wide">
+                  <p className="font-medium text-zinc-900 uppercase text-sm tracking-wide">
                     {testimonial.author}
                   </p>
                   <p className="text-xs text-zinc-600 uppercase tracking-wider">
@@ -171,18 +173,18 @@ export default function ProjectPage() {
         </section>
 
         {/* 8. Process Stages */}
-        <section className="py-20 bg-white">
+        <section className="py-12 md:py-16 bg-white">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-medium text-zinc-900 mb-10 text-center uppercase tracking-[-0.02em]">
               {t("projectDetail.process")}
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
               {processStages.map((stage, i) => (
                 <div key={i} className="text-center">
-                  <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-medium mx-auto mb-4 shadow-md">
                     {i + 1}
                   </div>
-                  <h3 className="text-xl font-semibold text-zinc-900 mb-3">{stage.title}</h3>
+                  <h3 className="text-lg md:text-xl font-medium text-zinc-900 mb-2">{stage.title}</h3>
                   <p className="text-zinc-600 text-sm leading-relaxed">{stage.description}</p>
                 </div>
               ))}
@@ -192,24 +194,25 @@ export default function ProjectPage() {
 
         {/* 8.5 Process Images/Screenshots */}
         {project.process && project.process.images && project.process.images.length > 0 && (
-          <section className="py-16 bg-zinc-50">
+          <section className="py-12 md:py-16 bg-zinc-50">
             <div className="container mx-auto px-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-8 text-center">
+              <h3 className="text-2xl md:text-3xl font-medium text-zinc-900 mb-6 text-center uppercase tracking-[-0.02em]">
                 {project.process.title || "Gestão de Demandas"}
               </h3>
               {project.process.description && (
-                <p className="text-zinc-600 text-center mb-12 max-w-4xl mx-auto leading-relaxed">
+                <p className="text-zinc-600 text-center mb-10 max-w-4xl mx-auto leading-relaxed text-sm md:text-base">
                   {project.process.description}
                 </p>
               )}
-              <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
                 {project.process.images.map((image, i) => (
-                  <div key={i} className="bg-white rounded-xl overflow-hidden shadow-lg">
+                  <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200">
                     <Image
                       src={image}
                       alt={`Processo ${i + 1}`}
                       width={800}
                       height={600}
+                      loading="lazy"
                       className="w-full h-auto"
                     />
                   </div>
@@ -220,10 +223,10 @@ export default function ProjectPage() {
         )}
 
         {/* 9. Outros Projetos */}
-        <section className="py-20 bg-zinc-50">
+        <section className="py-12 md:py-16 bg-zinc-50">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-12">Outros Projetos</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h2 className="text-3xl md:text-4xl font-medium text-zinc-900 mb-10 uppercase tracking-[-0.02em]">Outros Projetos</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {projects
                 .filter(p => p.slug && p.slug !== slug)
                 .slice(0, 3)
@@ -231,7 +234,8 @@ export default function ProjectPage() {
                   <Link
                     key={i}
                     href={`/projetos/${otherProject.slug}`}
-                    className="group block bg-white rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300"
+                    prefetch={true}
+                    className="group block bg-white rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-[1.02] active:scale-100 transition-all duration-300"
                   >
                     {/* Imagem */}
                     <div className="aspect-video bg-zinc-100 overflow-hidden">
@@ -241,11 +245,12 @@ export default function ProjectPage() {
                           alt={otherProject.title}
                           width={600}
                           height={400}
-                          className="w-full h-full object-contain group-hover:brightness-110 group-hover:scale-105 transition-all duration-400"
+                          loading="lazy"
+                          className="w-full h-full object-contain group-hover:brightness-110 group-hover:scale-105 transition-all duration-300"
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-blue-50 to-zinc-100 flex items-center justify-center">
-                          <span className="text-zinc-300 font-bold text-2xl">{otherProject.title.charAt(0)}</span>
+                          <span className="text-zinc-300 font-medium text-2xl">{otherProject.title.charAt(0)}</span>
                         </div>
                       )}
                     </div>

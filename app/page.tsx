@@ -32,33 +32,43 @@ export default function Home() {
         <InfiniteCarousel />
 
         {/* Sobre Mim */}
-        <section id="sobre" className="py-20 md:py-24 bg-white" aria-labelledby="sobre-heading">
+        <section id="sobre" className="py-12 md:py-16 bg-white" aria-labelledby="sobre-heading">
           <div className="container mx-auto px-6 max-w-4xl">
-            <h2 id="sobre-heading" className="text-4xl md:text-5xl font-bold mb-12 text-zinc-900">{t("about.title")}</h2>
+            <h2 id="sobre-heading" className="text-3xl md:text-4xl font-medium mb-8 text-zinc-900 uppercase tracking-[-0.02em]">{t("about.title")}</h2>
             <div className="space-y-6 text-zinc-700">
-              <p className="text-lg leading-relaxed">
+              <p className="text-base md:text-lg leading-relaxed">
                 {t("about.intro1")}
               </p>
-              <p className="leading-relaxed">
+              <p className="text-base leading-relaxed">
                 {t("about.intro2")}
               </p>
-              <div className="pt-6">
-                <h3 className="text-2xl font-semibold mb-6 text-zinc-900">{t("about.education")}</h3>
-                <ul className="space-y-2 text-zinc-600">
+              <div className="pt-8">
+                <h3 className="text-xl md:text-2xl font-medium mb-6 text-zinc-900">{t("about.education")}</h3>
+                <ul className="space-y-3">
                   {bio.education.map((edu, i) => (
-                    <li key={i}>• {edu}</li>
+                    <li key={i} className="flex items-start gap-3 text-zinc-600">
+                      <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>{edu}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
-              <div className="pt-6">
-                <h3 className="text-2xl font-semibold mb-6 text-zinc-900">{t("about.skills")}</h3>
+              <div className="pt-8">
+                <h3 className="text-xl md:text-2xl font-medium mb-6 text-zinc-900">{t("about.skills")}</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   {skills.map((skill, i) => (
-                    <div key={i}>
-                      <h4 className="font-semibold mb-2 text-zinc-900">{skill.category}</h4>
-                      <ul className="space-y-1">
+                    <div key={i} className="bg-zinc-50 rounded-xl p-4 hover:bg-zinc-100 transition-colors duration-200">
+                      <h4 className="font-medium mb-3 text-zinc-900 text-sm uppercase tracking-wider">{skill.category}</h4>
+                      <ul className="space-y-2">
                         {skill.items.map((item, j) => (
-                          <li key={j} className="text-zinc-600 text-sm">• {item}</li>
+                          <li key={j} className="flex items-start gap-2 text-zinc-600 text-sm">
+                            <svg className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>{item}</span>
+                          </li>
                         ))}
                       </ul>
                     </div>
@@ -80,19 +90,19 @@ export default function Home() {
       </main>
 
       {/* CTA Section - Cinza/Azul/Branco/Preto */}
-      <section className="py-20 md:py-32 bg-zinc-100">
+      <section className="py-12 md:py-20 bg-zinc-100">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             {/* Título CTA + Botão */}
-            <div className="flex flex-col md:flex-row items-center justify-between mb-16 bg-white rounded-3xl p-8 md:p-12">
-              <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-6 md:mb-0">
+            <div className="flex flex-col md:flex-row items-center justify-between mb-16 bg-white rounded-3xl p-8 md:p-12 shadow-sm">
+              <h2 className="text-2xl md:text-4xl font-medium text-zinc-900 mb-6 md:mb-0 uppercase tracking-[-0.02em]">
                 {t("cta.title")}
               </h2>
               <a
                 href="mailto:idlopezgiraldo.dlg@gmail.com"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 uppercase tracking-wider text-sm shadow-md hover:shadow-lg"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
                 {t("cta.button")}
@@ -105,9 +115,9 @@ export default function Home() {
                 href="https://www.linkedin.com/in/davidlopezgiraldo/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="aspect-square bg-zinc-200 rounded-3xl flex items-center justify-center hover:bg-zinc-300 transition-all duration-300 group"
+                className="aspect-square bg-zinc-200 rounded-3xl flex items-center justify-center hover:bg-zinc-300 active:scale-95 transition-all duration-200 group shadow-sm hover:shadow-md"
               >
-                <svg className="w-20 h-20 text-blue-600 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-20 h-20 text-blue-600 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
               </a>
@@ -145,9 +155,9 @@ export default function Home() {
             <div className="border-t border-zinc-300 pt-8">
               <div className="flex flex-col md:flex-row justify-between items-center text-sm">
                 <div className="flex flex-wrap gap-x-6 gap-y-2 mb-4 md:mb-0">
-                  <a href="#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">{t("footer.journey")}</a>
-                  <a href="#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">{t("footer.projects")}</a>
-                  <a href="mailto:idlopezgiraldo.dlg@gmail.com" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">{t("footer.contact")}</a>
+                  <a href="#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-zinc-900 after:transition-all">{t("footer.journey")}</a>
+                  <a href="#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-zinc-900 after:transition-all">{t("footer.projects")}</a>
+                  <a href="mailto:idlopezgiraldo.dlg@gmail.com" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-zinc-900 after:transition-all">{t("footer.contact")}</a>
                 </div>
                 <p className="text-zinc-500">{t("footer.copyright")}</p>
               </div>
@@ -235,6 +245,7 @@ function ProjectCard({ title, role, company, description, tags, image, images, s
   const [isInView, setIsInView] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const imageList = images || (image ? [image] : []);
   const imageCount = imageList.length;
@@ -287,16 +298,23 @@ function ProjectCard({ title, role, company, description, tags, image, images, s
       {imageList.length > 0 && (
         <div
           ref={imageContainerRef}
-          className="w-full overflow-hidden relative aspect-[16/9] md:aspect-[4/3] rounded-xl md:rounded-2xl cursor-pointer group"
+          className="w-full overflow-hidden relative aspect-[16/9] md:aspect-[4/3] rounded-xl md:rounded-2xl cursor-pointer group bg-zinc-100"
           onMouseMove={handleMouseMove}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
+          {/* Loading Skeleton */}
+          {!imageLoaded && (
+            <div className="absolute inset-0 bg-zinc-200 animate-pulse" />
+          )}
+
           <Image
             key={currentImage}
             src={imageList[currentImage]}
             alt={`${title}`}
             fill
+            loading="lazy"
+            onLoad={() => setImageLoaded(true)}
             className="object-cover group-hover:scale-105 transition-all duration-700 ease-out"
           />
 
@@ -348,7 +366,7 @@ function ProjectCard({ title, role, company, description, tags, image, images, s
 
   if (slug) {
     return (
-      <Link href={`/projetos/${slug}`} className="block">
+      <Link href={`/projetos/${slug}`} prefetch={true} className="block active:scale-[0.99] transition-transform duration-100">
         {content}
       </Link>
     );
@@ -396,7 +414,7 @@ function HeroSection() {
           {/* Botão CTA - Desktop apenas */}
           <a
             href="mailto:idlopezgiraldo.dlg@gmail.com"
-            className="hidden md:inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 hover:gap-4 uppercase tracking-wider text-[13.7px]"
+            className="hidden md:inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 hover:gap-4 shadow-md hover:shadow-lg uppercase tracking-wider text-[13.7px]"
           >
             {t("cta.button")}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -439,7 +457,7 @@ function HeroSection() {
       <div className="container mx-auto px-6 max-w-6xl md:hidden">
         <a
           href="mailto:idlopezgiraldo.dlg@gmail.com"
-          className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 hover:gap-4 uppercase tracking-wider text-[13.7px]"
+          className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 hover:gap-4 shadow-md hover:shadow-lg uppercase tracking-wider text-[13.7px]"
         >
           {t("cta.button")}
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -457,18 +475,18 @@ function TrajetoriaSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="trajetoria" className="py-12 md:py-16 lg:py-24 bg-zinc-50" aria-labelledby="trajetoria-heading">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="trajetoria" className="py-12 md:py-16 bg-zinc-50" aria-labelledby="trajetoria-heading">
+      <div className="container mx-auto px-6 max-w-5xl">
         <h2
           ref={headingRef as any}
           id="trajetoria-heading"
-          className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-zinc-900 apple-fade"
+          className="text-3xl md:text-4xl font-medium mb-8 text-zinc-900 uppercase tracking-[-0.02em] apple-fade"
         >
           {t("journey.title")}
         </h2>
         <div
           ref={timelineRef as any}
-          className="space-y-10 apple-stagger"
+          className="space-y-8 apple-stagger"
         >
           {experiences.map((exp, i) => (
             <TimelineItem key={i} {...exp} />
@@ -485,26 +503,26 @@ function ProjetosSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="projetos" className="py-12 md:py-16 lg:py-24 bg-white" aria-labelledby="projetos-heading">
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+    <section id="projetos" className="py-12 md:py-16 bg-white" aria-labelledby="projetos-heading">
+      <div className="container mx-auto px-6 max-w-7xl">
         {/* Header Section */}
-        <div className="mb-10 md:mb-16">
+        <div className="mb-10 md:mb-12">
           <h2
             ref={headingRef as any}
             id="projetos-heading"
-            className="text-4xl md:text-5xl font-bold mb-6 md:mb-8 text-zinc-900 leading-[1.2]"
+            className="text-3xl md:text-4xl font-medium mb-4 text-zinc-900 leading-[1.2] uppercase tracking-[-0.02em]"
           >
             {t("projects.title")}
           </h2>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <p className="text-zinc-600 text-sm md:text-base leading-relaxed max-w-2xl">
               {t("projects.intro")}
             </p>
             <Link
               href="/#projetos"
-              className="text-zinc-900 font-semibold uppercase tracking-wider text-xs md:text-sm underline underline-offset-4 hover:text-blue-600 transition-colors whitespace-nowrap"
+              className="text-zinc-900 font-medium uppercase tracking-wider text-xs md:text-sm hover:text-blue-600 transition-colors whitespace-nowrap group"
             >
-              {t("projects.viewAll")}
+              <span className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 group-hover:after:w-full after:bg-blue-600 after:transition-all">{t("projects.viewAll")}</span>
             </Link>
           </div>
         </div>
@@ -512,7 +530,7 @@ function ProjetosSection() {
         {/* Projects Grid - 2 Columns Desktop, 1 Column Mobile */}
         <div
           ref={gridRef as any}
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 md:gap-x-12 gap-y-12 md:gap-y-20"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 md:gap-y-12"
         >
           {projects.map((project, i) => (
             <ProjectCard key={i} {...project} />
@@ -529,18 +547,18 @@ function ConquistasSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="conquistas" className="py-12 md:py-16 lg:py-24 bg-zinc-50" aria-labelledby="conquistas-heading">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="conquistas" className="py-12 md:py-16 bg-zinc-50" aria-labelledby="conquistas-heading">
+      <div className="container mx-auto px-6 max-w-6xl">
         <h2
           ref={headingRef as any}
           id="conquistas-heading"
-          className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-zinc-900 apple-scale leading-[1.2]"
+          className="text-3xl md:text-4xl font-medium mb-8 text-zinc-900 apple-scale leading-[1.2] uppercase tracking-[-0.02em]"
         >
           {t("achievements.title")}
         </h2>
         <div
           ref={gridRef as any}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6 apple-stagger"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 apple-stagger"
         >
           {achievements.map((achievement, i) => (
             <AchievementCard key={i} {...achievement} />
