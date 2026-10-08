@@ -5,6 +5,7 @@ import { bio, experiences, projects, achievements, skills } from "@/lib/data";
 import { useState, useEffect, useRef } from "react";
 import { useScrollReveal, useParallax } from "@/hooks/useScrollReveal";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { ScrollAnimationObserver } from "@/components/ScrollAnimationObserver";
 import { BackToTop } from "@/components/BackToTop";
 import { ProjectTag } from "@/components/ProjectTag";
 import { InfiniteCarousel } from "@/components/InfiniteCarousel";
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-neutral-50 text-zinc-900">
       <ScrollProgress />
+      <ScrollAnimationObserver />
 
       <a href="#main-content" className="skip-link">
         {t("header.skipToContent")}
