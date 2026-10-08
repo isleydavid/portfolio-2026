@@ -32,8 +32,12 @@ export function Header() {
 
   return (
     <>
-      {/* Mobile: absolute (não fixed) | Desktop: normal flow */}
-      <header className="absolute md:relative top-0 w-full bg-transparent md:bg-white z-50 md:z-auto">
+      {/* Mobile: absolute (não fixed) | Desktop: fixed com backdrop blur */}
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/80 backdrop-blur-md shadow-sm'
+          : 'bg-transparent md:bg-white'
+      }`}>
         <nav className="container mx-auto px-6 py-3 md:py-6 flex items-center justify-end">
           {/* Menu Hamburguer - em ambos mobile e desktop */}
           <button
