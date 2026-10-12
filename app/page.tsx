@@ -382,16 +382,60 @@ function ProjectCard({ title, role, company, description, tags, image, images, s
   return content;
 }
 
+// ponytail: wrapper component for scale reveal
+function ScaleRevealWrapper({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.target.classList.toggle('is-visible', entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+  return <div ref={ref} className="scale-reveal">{children}</div>;
+}
+
 function AchievementCard({ title, description, metric }: {
   title: string;
   description: string;
   metric?: string;
 }) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+
+  // ponytail: counter animation
+  useEffect(() => {
+    if (!metric || !isVisible) return;
+    const match = metric.match(/(\d+)/);
+    if (!match) return;
+    const target = parseInt(match[1]);
+    const duration = 1500;
+    const start = Date.now();
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      setCount(Math.floor(progress * target));
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [metric, isVisible]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <article className="bg-white p-4 md:p-6 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
+    <article ref={ref} className="bg-white p-4 md:p-6 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
       <h3 className="text-xl md:text-2xl font-semibold mb-2 text-zinc-900 leading-[1.2]">{title}</h3>
       <p className="text-zinc-600 text-sm md:text-base mb-3 leading-[1.5]">{description}</p>
-      {metric && <p className="text-emerald-600 font-mono text-xs font-medium">{metric}</p>}
+      {metric && <p className="text-emerald-600 font-mono text-xs font-medium">{metric.replace(/\d+/, count.toString())}</p>}
     </article>
   );
 }
@@ -399,10 +443,36 @@ function AchievementCard({ title, description, metric }: {
 // Enhanced sections with scroll animations
 function HeroSection() {
   const { t } = useLanguage();
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
+  const shapeRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.target.classList.toggle('is-visible', e.isIntersecting)),
+      { threshold: 0.1 }
+    );
+    shapeRefs.current.forEach(ref => ref && observer.observe(ref));
+    return () => observer.disconnect();
+  }, []);
+
+  // ponytail: parallax scroll listener
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
+    setMousePos({ x, y });
+  };
 
   return (
-    <section className="min-h-[75vh] md:h-[90vh] bg-white pt-8 md:pt-4 pb-2 md:pb-4 relative flex flex-col md:flex md:items-center md:justify-center" aria-label="Introdução">
-      <div className="container mx-auto px-6 md:px-8 max-w-6xl relative z-10 flex-1 flex flex-col md:grid md:grid-cols-[1.2fr_1fr] md:gap-12 lg:gap-16 md:items-center md:h-full">
+    <section className="min-h-[75vh] md:h-[90vh] bg-white pt-8 md:pt-4 pb-6 md:pb-4 relative flex flex-col md:flex md:items-center md:justify-center" aria-label="Introdução">
+      <div className="container mx-auto px-6 md:px-8 max-w-6xl relative z-10 flex-1 flex flex-col md:grid md:grid-cols-[1.2fr_1fr] md:gap-12 lg:gap-16 md:items-center md:h-full overflow-visible">
         <div className="md:pr-8">
           {/* Título: Desktop reduzido, centralizado */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-zinc-900 mb-4 md:mb-3 leading-[1.0] tracking-[-0.02em] uppercase">
@@ -430,23 +500,39 @@ function HeroSection() {
           </a>
         </div>
 
-        {/* Foto profissional com formas geométricas CONTIDAS */}
-        {/* Desktop: grid col 2 | Mobile: relative abaixo */}
-        <div className="relative w-44 md:w-full md:max-h-[65vh] h-auto mx-auto md:mx-0 mb-3 md:mb-0 flex items-center" aria-hidden="true">
-          {/* Container com overflow-hidden para conter as formas */}
-          <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden">
-            {/* Formas geométricas DENTRO do container - hidden no mobile */}
-            {/* Triângulo amarelo - posicionado dentro */}
-            <div className="hidden md:block absolute z-0 top-0 right-0 w-0 h-0 border-l-[100px] border-l-transparent border-r-[100px] border-r-transparent border-b-[200px] border-b-yellow-400"></div>
+        {/* Foto com formas geométricas animadas */}
+        <div
+          className="relative w-44 sm:w-56 md:w-full md:max-h-[65vh] h-auto mx-auto md:mx-0 mb-3 md:mb-0 flex items-center isolate"
+          aria-hidden="true"
+          onMouseMove={handleMouseMove}
+        >
+          <div className="relative w-full isolate">
+            {/* Formas ATRÁS - parallax scroll */}
+            {/* Círculo amarelo - inferior esquerdo */}
+            <div
+              ref={el => shapeRefs.current[0] = el}
+              className="shape-reveal absolute pointer-events-none bottom-0 left-0 -translate-x-1/2 translate-y-1/3 w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-52 lg:h-52 rounded-full bg-[#FFD166]"
+              style={{ zIndex: -1, transform: `translateZ(-10px) translateX(-50%) translateY(calc(33% + ${scrollY * 0.15}px)) rotateX(${mousePos.y * 0.3}deg) rotateY(${-mousePos.x * 0.3}deg)` }}
+            ></div>
 
-            {/* Círculo azul - posicionado dentro */}
-            <div className="hidden md:block absolute z-0 bottom-8 left-8 w-32 h-32 rounded-full bg-blue-500 opacity-70"></div>
+            {/* Forma coral - lado esquerdo meio */}
+            <div
+              ref={el => shapeRefs.current[1] = el}
+              className="shape-reveal absolute pointer-events-none top-1/3 left-0 -translate-x-1/3 w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full bg-[#EF8172] opacity-90"
+              style={{ zIndex: -1, transform: `translateZ(-10px) translateX(-33%) translateY(${scrollY * 0.2}px) rotateX(${-mousePos.y * 0.4}deg) rotateY(${mousePos.x * 0.4}deg)` }}
+            ></div>
 
-            {/* Forma orgânica rosa/coral - posicionada dentro */}
-            <div className="hidden md:block absolute z-0 bottom-24 left-24 w-36 h-36 rounded-full bg-red-400 opacity-50"></div>
+            {/* Triângulo azul - superior direito, mais visível */}
+            <div
+              ref={el => shapeRefs.current[2] = el}
+              className="shape-reveal absolute pointer-events-none top-0 right-0 translate-x-1/4 -translate-y-1/4"
+              style={{ zIndex: -1, transform: `translateZ(-10px) translateX(25%) translateY(calc(-25% + ${scrollY * 0.1}px)) rotateX(${mousePos.y * 0.2}deg) rotateY(${mousePos.x * 0.2}deg) rotate(25deg)` }}
+            >
+              <div className="w-0 h-0 border-l-[45px] sm:border-l-[70px] md:border-l-[120px] lg:border-l-[140px] border-l-transparent border-b-[90px] sm:border-b-[140px] md:border-b-[240px] lg:border-b-[280px] border-b-[#118AB2] border-r-[45px] sm:border-r-[70px] md:border-r-[120px] lg:border-r-[140px] border-r-transparent"></div>
+            </div>
 
-            {/* Container da foto com borda laranja */}
-            <div className="relative z-10 rounded-xl md:rounded-2xl overflow-hidden border-2 md:border-8 border-[#CC785C] bg-white shadow-lg md:shadow-2xl">
+            {/* Foto NA FRENTE */}
+            <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl" style={{ zIndex: 1 }}>
               <Image
                 src="/david-office.png"
                 alt="David López Giraldo no escritório"
@@ -460,8 +546,8 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* Botão CTA - Mobile apenas, depois da foto: Aeonik Fono Medium */}
-      <div className="container mx-auto px-6 max-w-6xl md:hidden">
+      {/* Botão CTA - Mobile apenas, depois da foto */}
+      <div className="container mx-auto px-6 max-w-6xl md:hidden relative" style={{ zIndex: 10 }}>
         <a
           href="mailto:idlopezgiraldo.dlg@gmail.com"
           className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 hover:gap-4 shadow-md hover:shadow-lg uppercase tracking-wider text-[13.7px]"
@@ -517,7 +603,7 @@ function ProjetosSection() {
           <h2
             ref={headingRef as any}
             id="projetos-heading"
-            className="text-3xl md:text-4xl font-medium mb-4 text-zinc-900 leading-[1.2] uppercase tracking-[-0.02em]"
+            className="text-3xl md:text-4xl font-medium mb-4 text-zinc-900 leading-[1.2] uppercase tracking-[-0.02em] text-clip-reveal"
           >
             {t("projects.title")}
           </h2>
@@ -537,10 +623,12 @@ function ProjetosSection() {
         {/* Projects Grid - 2 Columns Desktop, 1 Column Mobile */}
         <div
           ref={gridRef as any}
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 md:gap-y-12 stagger-children"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 md:gap-y-12"
         >
           {projects.map((project, i) => (
-            <ProjectCard key={i} {...project} />
+            <ScaleRevealWrapper key={i}>
+              <ProjectCard {...project} />
+            </ScaleRevealWrapper>
           ))}
         </div>
       </div>

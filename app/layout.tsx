@@ -3,10 +3,11 @@ import { Inter } from "next/font/google";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import "./globals.css";
 
+// ponytail: Inter styled as Aeonik until real fonts added to /public/fonts
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "900"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
