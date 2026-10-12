@@ -401,7 +401,7 @@ function HeroSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="h-screen md:h-[90vh] bg-white pt-12 md:pt-4 pb-6 md:pb-4 relative flex flex-col md:flex md:items-center md:justify-center" aria-label="Introdução">
+    <section className="min-h-[75vh] md:h-[90vh] bg-white pt-8 md:pt-4 pb-2 md:pb-4 relative flex flex-col md:flex md:items-center md:justify-center" aria-label="Introdução">
       <div className="container mx-auto px-6 md:px-8 max-w-6xl relative z-10 flex-1 flex flex-col md:grid md:grid-cols-[1.2fr_1fr] md:gap-12 lg:gap-16 md:items-center md:h-full">
         <div className="md:pr-8">
           {/* Título: Desktop reduzido, centralizado */}
@@ -432,21 +432,21 @@ function HeroSection() {
 
         {/* Foto profissional com formas geométricas CONTIDAS */}
         {/* Desktop: grid col 2 | Mobile: relative abaixo */}
-        <div className="relative w-52 md:w-full md:max-h-[65vh] h-auto mx-auto md:mx-0 mb-5 md:mb-0 flex items-center overflow-visible" aria-hidden="true">
+        <div className="relative w-44 md:w-full md:max-h-[65vh] h-auto mx-auto md:mx-0 mb-3 md:mb-0 flex items-center" aria-hidden="true">
           {/* Container com overflow-hidden para conter as formas */}
-          <div className="relative w-full overflow-hidden rounded-xl md:rounded-2xl">
-            {/* Formas geométricas DENTRO do container */}
+          <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden">
+            {/* Formas geométricas DENTRO do container - hidden no mobile */}
             {/* Triângulo amarelo - posicionado dentro */}
-            <div className="absolute z-0 top-0 right-0 w-0 h-0 border-l-[60px] md:border-l-[100px] border-l-transparent border-r-[60px] md:border-r-[100px] border-r-transparent border-b-[120px] md:border-b-[200px] border-b-yellow-400"></div>
+            <div className="hidden md:block absolute z-0 top-0 right-0 w-0 h-0 border-l-[100px] border-l-transparent border-r-[100px] border-r-transparent border-b-[200px] border-b-yellow-400"></div>
 
             {/* Círculo azul - posicionado dentro */}
-            <div className="absolute z-0 bottom-4 left-4 md:bottom-8 md:left-8 w-20 h-20 md:w-32 md:h-32 rounded-full bg-blue-500 opacity-70"></div>
+            <div className="hidden md:block absolute z-0 bottom-8 left-8 w-32 h-32 rounded-full bg-blue-500 opacity-70"></div>
 
             {/* Forma orgânica rosa/coral - posicionada dentro */}
-            <div className="absolute z-0 bottom-16 left-16 md:bottom-24 md:left-24 w-24 h-24 md:w-36 md:h-36 rounded-full bg-red-400 opacity-50"></div>
+            <div className="hidden md:block absolute z-0 bottom-24 left-24 w-36 h-36 rounded-full bg-red-400 opacity-50"></div>
 
             {/* Container da foto com borda laranja */}
-            <div className="relative z-10 rounded-xl md:rounded-2xl overflow-hidden border-4 md:border-8 border-[#CC785C] bg-white shadow-xl md:shadow-2xl">
+            <div className="relative z-10 rounded-xl md:rounded-2xl overflow-hidden border-2 md:border-8 border-[#CC785C] bg-white shadow-lg md:shadow-2xl">
               <Image
                 src="/david-office.png"
                 alt="David López Giraldo no escritório"
