@@ -471,7 +471,7 @@ function HeroSection() {
   };
 
   return (
-    <section className="min-h-[75vh] md:h-[90vh] bg-white pt-8 md:pt-4 pb-6 md:pb-4 relative flex flex-col md:flex md:items-center md:justify-center" aria-label="Introdução">
+    <section className="min-h-[75vh] md:h-[90vh] bg-white pt-20 md:pt-4 pb-6 md:pb-4 relative flex flex-col md:flex md:items-center md:justify-center" aria-label="Introdução">
       <div className="container mx-auto px-6 md:px-8 max-w-6xl relative z-10 flex-1 flex flex-col md:grid md:grid-cols-[1.2fr_1fr] md:gap-12 lg:gap-16 md:items-center md:h-full overflow-visible">
         <div className="md:pr-8">
           {/* Título: Desktop reduzido, centralizado */}
@@ -483,26 +483,28 @@ function HeroSection() {
             <span className="text-red-500">.</span>
           </h1>
 
-          {/* Parágrafo: Desktop compacto */}
-          <p className="text-sm md:text-sm lg:text-base font-normal text-zinc-600 mb-5 md:mb-4 leading-[1.4]">
-            {t("hero.bio")}
-          </p>
+          {/* Parágrafo + Botão mobile inline */}
+          <div className="flex flex-col md:block mb-3 md:mb-0">
+            <p className="text-sm md:text-sm lg:text-base font-normal text-zinc-600 mb-3 md:mb-4 leading-[1.4]">
+              {t("hero.bio")}
+            </p>
 
-          {/* Botão CTA - Desktop apenas */}
-          <a
-            href="mailto:idlopezgiraldo.dlg@gmail.com"
-            className="hidden md:inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 hover:gap-4 shadow-md hover:shadow-lg uppercase tracking-wider text-[13.7px]"
-          >
-            {t("cta.button")}
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+            {/* Botão CTA - Mobile direita, Desktop normal */}
+            <a
+              href="mailto:idlopezgiraldo.dlg@gmail.com"
+              className="self-end md:self-auto inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 hover:gap-3 md:hover:gap-4 shadow-md hover:shadow-lg uppercase tracking-wider text-xs md:text-[13.7px] relative z-20"
+            >
+              {t("cta.button")}
+              <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
         </div>
 
         {/* Foto com formas geométricas animadas */}
         <div
-          className="relative w-44 sm:w-56 md:w-full md:max-h-[65vh] h-auto mx-auto md:mx-0 mb-3 md:mb-0 flex items-center isolate"
+          className="relative w-44 sm:w-56 md:w-full md:max-h-[65vh] h-auto mx-auto md:mx-0 mb-4 md:mb-0 flex items-center isolate"
           aria-hidden="true"
           onMouseMove={handleMouseMove}
         >
@@ -546,18 +548,6 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* Botão CTA - Mobile apenas, depois da foto */}
-      <div className="container mx-auto px-6 max-w-6xl md:hidden relative" style={{ zIndex: 10 }}>
-        <a
-          href="mailto:idlopezgiraldo.dlg@gmail.com"
-          className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 hover:gap-4 shadow-md hover:shadow-lg uppercase tracking-wider text-[13.7px]"
-        >
-          {t("cta.button")}
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-      </div>
     </section>
   );
 }
