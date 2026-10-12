@@ -14,8 +14,24 @@ import { InfiniteCarousel } from "@/components/InfiniteCarousel";
 import { Header } from "@/components/Header";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+// ponytail: universal scroll reveal hook
+function useRevealOnScroll(threshold = 0.1) {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.target.classList.toggle('is-visible', entry.isIntersecting),
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return ref;
+}
+
 export default function Home() {
   const { t } = useLanguage();
+  const sobreRef = useRevealOnScroll(0.15);
+  const skillsRef = useRevealOnScroll(0.15);
 
   return (
     <SoundWrapper>
@@ -38,9 +54,9 @@ export default function Home() {
         <InfiniteCarousel />
 
         {/* Sobre Mim */}
-        <section id="sobre" className="py-12 md:py-16 bg-white animate-fade-in-up" aria-labelledby="sobre-heading">
+        <section ref={sobreRef as any} id="sobre" className="py-12 md:py-16 bg-white apple-fade" aria-labelledby="sobre-heading">
           <div className="container mx-auto px-6 max-w-4xl">
-            <h2 id="sobre-heading" className="text-3xl md:text-4xl font-medium mb-8 text-zinc-900 uppercase tracking-[-0.02em] animate-text-reveal">{t("about.title")}</h2>
+            <h2 id="sobre-heading" className="text-3xl md:text-4xl font-medium mb-8 text-zinc-900 uppercase tracking-[-0.02em] text-clip-reveal">{t("about.title")}</h2>
             <div className="space-y-6 text-zinc-700">
               <p className="text-base md:text-lg leading-relaxed">
                 {t("about.intro1")}
@@ -61,9 +77,9 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-              <div className="pt-8">
+              <div ref={skillsRef as any} className="pt-8">
                 <h3 className="text-xl md:text-2xl font-medium mb-6 text-zinc-900">{t("about.skills")}</h3>
-                <div className="grid md:grid-cols-2 gap-6 stagger-children">
+                <div className="grid md:grid-cols-2 gap-6 apple-stagger">
                   {skills.map((skill, i) => (
                     <div key={i} className="bg-zinc-50 rounded-xl p-4 hover:bg-zinc-100 hover:shadow-md magnetic-hover transition-all duration-300">
                       <h4 className="font-medium mb-3 text-zinc-900 text-sm uppercase tracking-wider">{skill.category}</h4>
