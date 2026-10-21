@@ -1,12 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  // Página de projeto usa a marca com o nome por extenso; o resto, só o monograma.
+  const isProjectPage = usePathname()?.startsWith("/projetos/") ?? false;
 
   const languages = [
     { code: "pt" as const, flag: "🇧🇷", name: "Português" },
@@ -38,7 +41,23 @@ export function Header() {
           ? 'bg-white/80 backdrop-blur-md shadow-sm'
           : 'bg-transparent md:bg-white'
       }`}>
-        <nav className="container mx-auto px-6 py-3 md:py-6 flex items-center justify-end">
+        <nav className="container mx-auto px-6 py-3 md:py-6 flex items-center justify-between">
+          {/* Marca - leva para a home */}
+          <Link href="/" aria-label="David López Giraldo - início" className="flex items-center">
+            {/* eslint-disable-next-line @next/next/no-img-element -- SVG vetorial: next/image nao otimiza e exigiria dangerouslyAllowSVG */}
+            <img
+              src={isProjectPage ? "/logo-nome.svg" : "/logo-header.svg"}
+              alt="David López Giraldo"
+              // Os SVGs so trazem viewBox, sem width/height: sem aspect-ratio
+              // explicito o w-auto resolve para 0. Razoes vindas do viewBox.
+              className={
+                isProjectPage
+                  ? "h-10 w-auto aspect-[143.44/32]"
+                  : "h-8 w-auto aspect-square"
+              }
+            />
+          </Link>
+
           {/* Menu Hamburguer - em ambos mobile e desktop */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
