@@ -12,11 +12,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Isley Giraldo - Product Manager & UX Leader",
+  title: "David López Giraldo - Product Manager & UX Leader",
   description: "Product Manager especializado em produtos digitais B2B, B2G e iGaming. Experiência em liderança de squads, metodologias ágeis e IA generativa.",
-  metadataBase: new URL("https://isleygiraldo.com"),
+  metadataBase: new URL("https://www.davidlopezgiraldo.com"),
   openGraph: {
-    title: "Isley Giraldo - Product Manager & UX Leader",
+    title: "David López Giraldo - Product Manager & UX Leader",
     description: "Product Manager especializado em produtos digitais B2B, B2G e iGaming.",
     type: "website",
   },
