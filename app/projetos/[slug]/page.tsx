@@ -34,13 +34,8 @@ export default function ProjectPage() {
     year: "2025-2026"
   };
 
-  const testimonial = {
-    quote: project.testimonial?.quote || "A plataforma transformou completamente nossa gestão. O impacto foi extraordinário, superando todas as nossas expectativas de modernização.",
-    author: project.testimonial?.author || "Cliente",
-    role: project.testimonial?.role || "Gestão",
-    company: project.company,
-    photo: project.testimonial?.photo || "/david-cubo.jpg"
-  };
+  // ponytail: sem depoimento real, a seção não renderiza. Nunca inventar citação de cliente.
+  const testimonial = project.testimonial;
 
   const processStages = project.process?.stages || project.strategy || [
     { title: "Discovery", description: "Análise profunda das necessidades e objetivos do projeto, mapeamento de stakeholders e levantamento de requisitos técnicos e de negócio." },
@@ -165,38 +160,42 @@ export default function ProjectPage() {
         )}
 
         {/* 7. Testimonial - Snowhouse Style */}
-        <section className="py-12 md:py-16 bg-zinc-50">
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto">
-              {/* Quote */}
-              <blockquote className="text-base md:text-lg text-zinc-900 leading-relaxed mb-6">
-                "{testimonial.quote}"
-              </blockquote>
+        {testimonial && (
+          <section className="py-12 md:py-16 bg-zinc-50">
+            <div className="container mx-auto px-6">
+              <div className="max-w-4xl mx-auto">
+                {/* Quote */}
+                <blockquote className="text-base md:text-lg text-zinc-900 leading-relaxed mb-6">
+                  "{testimonial.quote}"
+                </blockquote>
 
-              {/* Author Info - Foto ao lado do nome */}
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-200 flex-shrink-0">
-                  <Image
-                    src={testimonial.photo}
-                    alt={testimonial.author}
-                    width={48}
-                    height={48}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <p className="font-medium text-zinc-900 uppercase text-sm tracking-wide">
-                    {testimonial.author}
-                  </p>
-                  <p className="text-xs text-zinc-600 uppercase tracking-wider">
-                    {testimonial.role}
-                  </p>
+                {/* Author Info - Foto ao lado do nome */}
+                <div className="flex items-center gap-4">
+                  {testimonial.photo && (
+                    <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-200 flex-shrink-0">
+                      <Image
+                        src={testimonial.photo}
+                        alt={testimonial.author}
+                        width={48}
+                        height={48}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <p className="font-medium text-zinc-900 uppercase text-sm tracking-wide">
+                      {testimonial.author}
+                    </p>
+                    <p className="text-xs text-zinc-600 uppercase tracking-wider">
+                      {testimonial.role}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* 8. Process Stages */}
         <section className="py-12 md:py-16 bg-white">
