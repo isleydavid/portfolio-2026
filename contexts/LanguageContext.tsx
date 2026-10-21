@@ -1,5 +1,6 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
+import ptTranslations from "@/locales/pt.json";
 
 type Language = "pt" | "en" | "es";
 
@@ -13,13 +14,20 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("pt");
-  const [translations, setTranslations] = useState<Record<string, any>>({});
+  // ponytail: pt entra estatico para o SSR servir conteudo, nao chaves cruas.
+  // en/es continuam no import dinamico e so aparecem apos a hidratacao — se
+  // precisarem ser indexados pelo Google, ai sim i18n routing (/en, /es).
+  const [translations, setTranslations] = useState<Record<string, any>>(ptTranslations);
 
   // Load translations on language change
   useEffect(() => {
+    if (language === "pt") {
+      setTranslations(ptTranslations);
+      return;
+    }
     import(`@/locales/${language}.json`)
       .then((module) => setTranslations(module.default))
-      .catch(() => setTranslations({}));
+      .catch(() => setTranslations(ptTranslations));
   }, [language]);
 
   // Load language preference from localStorage on mount
