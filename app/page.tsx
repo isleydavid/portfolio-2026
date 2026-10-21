@@ -528,21 +528,21 @@ function HeroSection() {
             {/* Formas ATRÁS - parallax scroll */}
             {/* Círculo amarelo - inferior esquerdo */}
             <div
-              ref={el => shapeRefs.current[0] = el}
+              ref={el => { shapeRefs.current[0] = el; }}
               className="shape-reveal absolute pointer-events-none bottom-0 left-0 -translate-x-1/2 translate-y-1/3 w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-52 lg:h-52 rounded-full bg-[#FFD166]"
               style={{ zIndex: -1, transform: `translateZ(-10px) translateX(-50%) translateY(calc(33% + ${scrollY * 0.15}px)) rotateX(${mousePos.y * 0.3}deg) rotateY(${-mousePos.x * 0.3}deg)` }}
             ></div>
 
             {/* Forma coral - lado esquerdo meio */}
             <div
-              ref={el => shapeRefs.current[1] = el}
+              ref={el => { shapeRefs.current[1] = el; }}
               className="shape-reveal absolute pointer-events-none top-1/3 left-0 -translate-x-1/3 w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full bg-[#EF8172] opacity-90"
               style={{ zIndex: -1, transform: `translateZ(-10px) translateX(-33%) translateY(${scrollY * 0.2}px) rotateX(${-mousePos.y * 0.4}deg) rotateY(${mousePos.x * 0.4}deg)` }}
             ></div>
 
             {/* Triângulo azul - superior direito, mais visível */}
             <div
-              ref={el => shapeRefs.current[2] = el}
+              ref={el => { shapeRefs.current[2] = el; }}
               className="shape-reveal absolute pointer-events-none top-0 right-0 translate-x-1/4 -translate-y-1/4"
               style={{ zIndex: -1, transform: `translateZ(-10px) translateX(25%) translateY(calc(-25% + ${scrollY * 0.1}px)) rotateX(${mousePos.y * 0.2}deg) rotateY(${mousePos.x * 0.2}deg) rotate(25deg)` }}
             >
