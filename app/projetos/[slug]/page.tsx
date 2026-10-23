@@ -28,6 +28,9 @@ export async function generateMetadata(
   return {
     title,
     description,
+    // Obrigatorio: sem isto a pagina herda o canonical do layout, que aponta
+    // para a home — ou seja, declararia a si mesma como copia da home.
+    alternates: { canonical: `/projetos/${slug}` },
     openGraph: {
       title,
       description,
