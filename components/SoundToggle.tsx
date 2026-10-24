@@ -7,6 +7,9 @@ export function SoundToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // localStorage e matchMedia nao existem no servidor; ler durante o render
+    // quebraria a hidratacao. Efeito no mount e o caminho correto aqui.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     // Restore saved preference
     const saved = localStorage.getItem('soundEnabled');
