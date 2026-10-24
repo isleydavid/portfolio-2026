@@ -1,60 +1,17 @@
 @import "tailwindcss";
 
+/* ponytail: aqui existia um bloco de 39 tokens rotulado "DESIGN SYSTEM
+   TOKENS". 35 deles tinham zero uso — nem via var() no CSS, nem via
+   @theme no Tailwind. O estilo real do site e utilitario Tailwind no
+   JSX (text-zinc-900, bg-zinc-50, ...), que ja traz a propria escala.
+   Sobraram apenas os quatro que algo de fato consome. Para tokenizar
+   de verdade, o caminho e declarar em @theme para o Tailwind gerar os
+   utilitarios — nao :root solto, que nada le. */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-
-  /* ========================================
-     DESIGN SYSTEM TOKENS
-     Based on Snowhouse Studio Reference
-     ======================================== */
-
-  /* Colors - Primary */
-  --primary-600: #3B82F6;
-  --primary-700: #2563EB;
-  --accent-red: #EF4444;
-
-  /* Colors - Neutral */
-  --zinc-50: #FAFAFA;
-  --zinc-100: #F4F4F5;
-  --zinc-600: #52525B;
-  --zinc-900: #18181B;
-  --white: #FFFFFF;
-  --black: #000000;
-
-  /* Typography Scale - Mobile Base / Desktop Via Classes */
-  --text-label: 0.625rem;      /* 10px - Tags/Labels mobile */
-  --text-xs: 0.75rem;          /* 12px - Body Small mobile */
-  --text-sm: 0.875rem;         /* 14px - Body Regular mobile */
-  --text-base: 1rem;           /* 16px - Body Large mobile */
-  --text-lg: 1.125rem;         /* 18px - Body Large desktop */
-  --text-xl: 1.25rem;          /* 20px - H3 mobile */
-  --text-2xl: 1.5rem;          /* 24px - H3 desktop */
-  --text-3xl: 2rem;            /* 32px - H2 mobile */
-  --text-4xl: 3rem;            /* 48px - H2 desktop / H1 mobile */
-  --text-5xl: 4rem;            /* 64px - Display */
-  --text-6xl: 6rem;            /* 96px - H1 desktop */
-  --text-7xl: 7rem;            /* 112px - Name display desktop */
-
-  /* Spacing System - 8px Base */
-  --spacing-xs: 0.5rem;        /* 8px - Micro gaps */
-  --spacing-sm: 1rem;          /* 16px - Card padding mobile */
-  --spacing-md: 1.5rem;        /* 24px - Component spacing */
-  --spacing-lg: 2rem;          /* 32px - Between sections */
-  --spacing-xl: 3rem;          /* 48px - Section padding mobile */
-  --spacing-2xl: 4rem;         /* 64px - Section padding tablet */
-  --spacing-3xl: 6rem;         /* 96px - Section padding desktop */
-
-  /* Border Radius */
-  --radius-sm: 0.5rem;         /* 8px */
-  --radius-md: 0.75rem;        /* 12px */
-  --radius-lg: 1rem;           /* 16px */
-  --radius-xl: 1.5rem;         /* 24px */
-
-  /* Line Heights */
-  --leading-tight: 1.2;        /* Títulos */
-  --leading-normal: 1.5;       /* Corpo de texto */
-  --leading-relaxed: 1.75;     /* Parágrafos longos */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
 }
 
 @theme inline {
@@ -110,10 +67,6 @@ p {
 
 .font-semibold {
   font-weight: 600;
-}
-
-.font-regular {
-  font-weight: 400;
 }
 
 /* Scroll padding for fixed header */
@@ -191,27 +144,7 @@ html {
   }
 }
 
-@keyframes slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
 @keyframes scale-in {
   from {
@@ -234,40 +167,7 @@ html {
   animation: fade-slide-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
 }
 
-.reveal-left {
-  opacity: 0;
-  animation: slide-in-left 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
-}
-
-.reveal-left.is-visible {
-  animation: slide-in-left 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
-}
-
-.reveal-right {
-  opacity: 0;
-  animation: slide-in-right 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
-}
-
-.reveal-right.is-visible {
-  animation: slide-in-right 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
-}
-
-.reveal-scale {
-  opacity: 0;
-  animation: scale-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards;
-}
-
-.reveal-scale.is-visible {
-  animation: scale-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0s forwards;
-}
-
 /* .stagger-children: definido mais abaixo (versão transition). */
-
-/* Parallax effect for hero background */
-.parallax-bg {
-  will-change: transform;
-  transition: transform 0.1s ease-out;
-}
 
 /* Apple-style animations - dramatic scale + blur */
 @keyframes apple-scale-in {
@@ -296,16 +196,6 @@ html {
   }
 }
 
-@keyframes apple-clip-reveal {
-  from {
-    opacity: 0;
-    clip-path: inset(100% 0 0 0);
-  }
-  to {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-  }
-}
 
 /* Apple easing: cubic-bezier(0.16, 1, 0.3, 1) */
 /* Fallback: show after 2s if JS doesn't trigger */
@@ -327,15 +217,6 @@ html {
   animation: apple-fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
 }
 
-.apple-clip {
-  opacity: 0;
-  animation: apple-clip-reveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
-}
-
-.apple-clip.is-visible {
-  animation: apple-clip-reveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
-}
-
 /* Apple-style stagger - slower, more dramatic */
 .apple-stagger > * {
   opacity: 0;
@@ -354,90 +235,9 @@ html {
 .apple-stagger.is-visible > *:nth-child(10) { animation: apple-scale-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards; }
 
 /* Parallax layers (multi-speed) */
-.parallax-layer {
-  will-change: transform;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
 
 /* Slide Horizontal Effect - Carousel transitions */
-@keyframes slideOutLeft {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0.3;
-    transform: translateX(-100%);
-  }
-}
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.carousel-image-exit {
-  animation: slideOutLeft 600ms cubic-bezier(0.77, 0, 0.175, 1) forwards;
-}
-
-.carousel-image-enter {
-  animation: slideInRight 600ms cubic-bezier(0.77, 0, 0.175, 1) forwards;
-}
-
-/* Animated Gradient Background - Apple Style */
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes gradient-rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.animated-gradient-bg {
-  background: linear-gradient(
-    -45deg,
-    #0c4a6e,
-    #1e3a8a,
-    #1e40af,
-    #1d4ed8,
-    #334155,
-    #1e293b,
-    #0c4a6e
-  );
-  background-size: 400% 400%;
-  animation: gradient-shift 12s ease infinite;
-}
-
-.animated-gradient-dark {
-  background: linear-gradient(
-    -45deg,
-    #0f172a,
-    #1e293b,
-    #334155,
-    #0f172a
-  );
-  background-size: 400% 400%;
-  animation: gradient-shift 20s ease infinite;
-}
 
 /* Bottom Navigation - Mobile only */
 @media (min-width: 768px) {
@@ -541,11 +341,6 @@ html {
 }
 
 /* Backdrop blur utilities */
-.backdrop-blur-glass {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
 /* Text reveal animation */
 @keyframes text-reveal {
   from {
@@ -597,15 +392,6 @@ html {
 .shape-reveal:nth-child(3).is-visible { animation-delay: 0.3s; }
 
 /* hover 3D tilt */
-.shape-3d {
-  transition: transform 0.3s ease-out;
-  transform-style: preserve-3d;
-}
-
-.shape-3d:hover {
-  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(1.05);
-}
-
 /* ponytail: text clip reveal */
 @keyframes text-clip-reveal {
   from { clip-path: inset(0 100% 0 0); opacity: 0; }
