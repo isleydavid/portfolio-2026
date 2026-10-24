@@ -1,7 +1,6 @@
 "use client";
 import { projects } from "@/lib/data";
 import Image from "next/image";
-import Link from "next/link";
 
 export function InfiniteCarousel() {
   // Duplicar projetos para scroll infinito

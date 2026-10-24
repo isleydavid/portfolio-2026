@@ -16,9 +16,11 @@ export function useSoundEffects(): SoundEffects {
   const audioContextRef = useRef<AudioContext | null>(null);
 
   useEffect(() => {
-    // Check user's motion preference
+    // matchMedia nao existe no servidor; ler durante o render quebraria a
+    // hidratacao. Efeito no mount e o caminho correto aqui.
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsEnabled(false);
     }
 

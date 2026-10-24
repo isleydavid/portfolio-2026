@@ -3,6 +3,8 @@ import { createContext, useContext, useState, useEffect } from "react";
 import ptTranslations from "@/locales/pt.json";
 
 type Language = "pt" | "en" | "es";
+// Os locales sao JSON aninhado de profundidade livre.
+type Translations = { [key: string]: string | Translations };
 
 interface LanguageContextType {
   language: Language;
@@ -17,28 +19,37 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // ponytail: pt entra estatico para o SSR servir conteudo, nao chaves cruas.
   // en/es continuam no import dinamico e so aparecem apos a hidratacao — se
   // precisarem ser indexados pelo Google, ai sim i18n routing (/en, /es).
-  const [translations, setTranslations] = useState<Record<string, any>>(ptTranslations);
+  // Guardamos o que ja foi carregado e derivamos o idioma atual, em vez de
+  // chamar setState sincrono dentro do efeito. De quebra, trocar de idioma e
+  // voltar nao refaz o import.
+  const [loaded, setLoaded] = useState<Partial<Record<Language, Translations>>>({
+    pt: ptTranslations,
+  });
+  const translations = loaded[language] ?? ptTranslations;
 
-  // Load translations on language change
   useEffect(() => {
-    if (language === "pt") {
-      setTranslations(ptTranslations);
-      return;
-    }
+    if (loaded[language]) return;
     import(`@/locales/${language}.json`)
-      .then((module) => setTranslations(module.default))
-      .catch(() => setTranslations(ptTranslations));
-  }, [language]);
+      .then((module) => setLoaded((prev) => ({ ...prev, [language]: module.default })))
+      .catch(() => {}); // sem o locale, o ?? acima ja cai em pt
+  }, [language, loaded]);
 
-  // Load language preference from localStorage on mount
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem("portfolio-language") as Language;
-      if (saved && ["pt", "en", "es"].includes(saved)) {
-        setLanguageState(saved);
-      }
+    // localStorage nao existe no servidor; ler durante o render quebraria a
+    // hidratacao. Efeito no mount e o caminho correto aqui.
+    const saved = localStorage.getItem("portfolio-language") as Language;
+    if (saved && ["pt", "en", "es"].includes(saved)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLanguageState(saved);
     }
   }, []);
+
+  // O layout e server component e nasce com lang="pt-BR". Sem isto, trocar o
+  // idioma deixaria o atributo mentindo sobre o conteudo — leitor de tela e
+  // buscador leem o lang, nao o texto.
+  useEffect(() => {
+    document.documentElement.lang = language === "pt" ? "pt-BR" : language;
+  }, [language]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -47,14 +58,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   // Translation function with nested key support
   const t = (key: string): string => {
-    const keys = key.split(".");
-    let value: any = translations;
-
-    for (const k of keys) {
-      value = value?.[k];
+    let value: string | Translations | undefined = translations;
+    for (const k of key.split(".")) {
+      if (typeof value !== "object") return key;
+      value = value[k];
     }
-
-    return value || key;
+    return typeof value === "string" ? value : key;
   };
 
   return (
