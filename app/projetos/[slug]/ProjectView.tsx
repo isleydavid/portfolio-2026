@@ -89,7 +89,7 @@ export default function ProjectView({ slug }: { slug: string }) {
               </p>
               {project.challenge && (
                 <p className="text-base leading-relaxed">
-                  <strong className="font-medium text-zinc-900">Desafio:</strong> {project.challenge}
+                  <strong className="font-medium text-zinc-900">{t("projectDetail.challenge")}</strong> {project.challenge}
                 </p>
               )}
               {project.solution && project.solution[0] && (
@@ -238,7 +238,7 @@ export default function ProjectView({ slug }: { slug: string }) {
         {/* 9. Outros Projetos */}
         <section className="py-12 md:py-16 bg-zinc-50">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-medium text-zinc-900 mb-10 uppercase tracking-[-0.02em]">Outros Projetos</h2>
+            <h2 className="text-3xl md:text-4xl font-medium text-zinc-900 mb-10 uppercase tracking-[-0.02em]">{t("projectDetail.otherProjects")}</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {projects
                 .filter(p => p.slug && p.slug !== slug)
@@ -293,7 +293,7 @@ export default function ProjectView({ slug }: { slug: string }) {
             {/* Título CTA + Botão */}
             <div className="flex flex-col md:flex-row items-center justify-between mb-16 bg-white rounded-3xl p-8 md:p-12">
               <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-6 md:mb-0">
-                EXCITED? LET&rsquo;S GET MOVING.
+                {t("cta.title")}
               </h2>
               <a
                 href={AGENDAMENTO_URL}
@@ -304,7 +304,7 @@ export default function ProjectView({ slug }: { slug: string }) {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
-                SCHEDULE A CALL
+                {t("cta.button")}
               </a>
             </div>
 
@@ -354,11 +354,11 @@ export default function ProjectView({ slug }: { slug: string }) {
             <div className="border-t border-zinc-300 pt-8">
               <div className="flex flex-col md:flex-row justify-between items-center text-sm">
                 <div className="flex flex-wrap gap-x-6 gap-y-2 mb-4 md:mb-0">
-                  <Link href="/#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">TRAJETÓRIA</Link>
-                  <Link href="/#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">PROJETOS</Link>
-                  <a href="mailto:idlopezgiraldo.dlg@gmail.com" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">CONTATO</a>
+                  <Link href="/#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">{t("footer.journey")}</Link>
+                  <Link href="/#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">{t("footer.projects")}</Link>
+                  <a href="mailto:idlopezgiraldo.dlg@gmail.com" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">{t("footer.contact")}</a>
                 </div>
-                <p className="text-zinc-500">© 2026 David López Giraldo</p>
+                <p className="text-zinc-500">{t("footer.copyright")}</p>
               </div>
             </div>
           </div>
@@ -418,7 +418,7 @@ export default function ProjectView({ slug }: { slug: string }) {
               onClick={() => setIsPhotoModalOpen(false)}
               className="absolute -top-12 right-0 text-white hover:text-zinc-300 transition-colors flex items-center gap-2"
             >
-              <span>Fechar</span>
+              <span>{t("projectDetail.close")}</span>
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
