@@ -160,6 +160,9 @@ export const projects: Project[] = [
     slug: "conecta-oss",
     category: "b2g",
     images: [
+      // Frame do video: mostra o app do cidadao e ja enuncia a proposta.
+      // Funciona melhor como capa que um screenshot de painel admin.
+      "/projects/conecta-oss-capa.png",
       "/projects/conecta-oss-1.png",
       "/projects/conecta-oss-2.png",
       "/projects/conecta-oss-3.png"
