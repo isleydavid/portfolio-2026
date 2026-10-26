@@ -154,7 +154,7 @@ export default function ProjectView({ slug }: { slug: string }) {
               <div className="max-w-4xl mx-auto">
                 {/* Quote */}
                 <blockquote className="text-base md:text-lg text-zinc-900 leading-relaxed mb-6">
-                  "{testimonial.quote}"
+                  &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
 
                 {/* Author Info - Foto ao lado do nome */}
@@ -293,7 +293,7 @@ export default function ProjectView({ slug }: { slug: string }) {
             {/* Título CTA + Botão */}
             <div className="flex flex-col md:flex-row items-center justify-between mb-16 bg-white rounded-3xl p-8 md:p-12">
               <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-6 md:mb-0">
-                EXCITED? LET'S GET MOVING.
+                EXCITED? LET&rsquo;S GET MOVING.
               </h2>
               <a
                 href="mailto:idlopezgiraldo.dlg@gmail.com"
@@ -352,8 +352,8 @@ export default function ProjectView({ slug }: { slug: string }) {
             <div className="border-t border-zinc-300 pt-8">
               <div className="flex flex-col md:flex-row justify-between items-center text-sm">
                 <div className="flex flex-wrap gap-x-6 gap-y-2 mb-4 md:mb-0">
-                  <a href="/#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">TRAJETÓRIA</a>
-                  <a href="/#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">PROJETOS</a>
+                  <Link href="/#trajetoria" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">TRAJETÓRIA</Link>
+                  <Link href="/#projetos" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">PROJETOS</Link>
                   <a href="mailto:idlopezgiraldo.dlg@gmail.com" className="text-zinc-700 hover:text-zinc-900 transition-colors font-medium">CONTATO</a>
                 </div>
                 <p className="text-zinc-500">© 2026 David López Giraldo</p>

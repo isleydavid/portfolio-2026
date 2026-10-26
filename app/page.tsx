@@ -3,20 +3,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { bio, experiences, projects, achievements, skills } from "@/lib/data";
 import { useState, useEffect, useRef } from "react";
-import { useScrollReveal, useParallax } from "@/hooks/useScrollReveal";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollAnimationObserver } from "@/components/ScrollAnimationObserver";
 import { SoundWrapper } from "@/components/SoundWrapper";
 import { SoundToggle } from "@/components/SoundToggle";
 import { BackToTop } from "@/components/BackToTop";
-import { ProjectTag } from "@/components/ProjectTag";
 import { InfiniteCarousel } from "@/components/InfiniteCarousel";
 import { Header } from "@/components/Header";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // ponytail: universal scroll reveal hook
-function useRevealOnScroll(threshold = 0.1) {
-  const ref = useRef<HTMLElement>(null);
+function useRevealOnScroll<T extends HTMLElement = HTMLElement>(threshold = 0.1) {
+  const ref = useRef<T>(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.target.classList.toggle('is-visible', entry.isIntersecting),
@@ -30,8 +29,8 @@ function useRevealOnScroll(threshold = 0.1) {
 
 export default function Home() {
   const { t } = useLanguage();
-  const sobreRef = useRevealOnScroll(0.15);
-  const skillsRef = useRevealOnScroll(0.15);
+  const sobreRef = useRevealOnScroll<HTMLElement>(0.15);
+  const skillsRef = useRevealOnScroll<HTMLDivElement>(0.15);
 
   return (
     <SoundWrapper>
@@ -54,7 +53,7 @@ export default function Home() {
         <InfiniteCarousel />
 
         {/* Sobre Mim */}
-        <section ref={sobreRef as any} id="sobre" className="py-12 md:py-16 bg-white apple-fade" aria-labelledby="sobre-heading">
+        <section ref={sobreRef} id="sobre" className="py-12 md:py-16 bg-white apple-fade" aria-labelledby="sobre-heading">
           <div className="container mx-auto px-6 max-w-4xl">
             <h2 id="sobre-heading" className="text-3xl md:text-4xl font-medium mb-8 text-zinc-900 uppercase tracking-[-0.02em] text-clip-reveal">{t("about.title")}</h2>
             <div className="space-y-6 text-zinc-700">
@@ -77,7 +76,7 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-              <div ref={skillsRef as any} className="pt-8">
+              <div ref={skillsRef} className="pt-8">
                 <h3 className="text-xl md:text-2xl font-medium mb-6 text-zinc-900">{t("about.skills")}</h3>
                 <div className="grid md:grid-cols-2 gap-6 apple-stagger">
                   {skills.map((skill, i) => (
@@ -253,7 +252,7 @@ function TimelineItem({ year, period, title, company, description, current = fal
   );
 }
 
-function ProjectCard({ title, role, company, description, tags, image, images, slug }: {
+function ProjectCard({ title, description, tags, image, images, slug }: {
   title: string;
   role: string;
   company: string;
@@ -569,22 +568,22 @@ function HeroSection() {
 }
 
 function TrajetoriaSection() {
-  const headingRef = useScrollReveal();
-  const timelineRef = useScrollReveal();
+  const headingRef = useScrollReveal<HTMLHeadingElement>();
+  const timelineRef = useScrollReveal<HTMLDivElement>();
   const { t } = useLanguage();
 
   return (
     <section id="trajetoria" className="py-12 md:py-16 bg-zinc-50" aria-labelledby="trajetoria-heading">
       <div className="container mx-auto px-6 max-w-5xl">
         <h2
-          ref={headingRef as any}
+          ref={headingRef}
           id="trajetoria-heading"
           className="text-3xl md:text-4xl font-medium mb-8 text-zinc-900 uppercase tracking-[-0.02em] apple-fade"
         >
           {t("journey.title")}
         </h2>
         <div
-          ref={timelineRef as any}
+          ref={timelineRef}
           className="space-y-8 apple-stagger"
         >
           {experiences.map((exp, i) => (
@@ -597,8 +596,8 @@ function TrajetoriaSection() {
 }
 
 function ProjetosSection() {
-  const headingRef = useScrollReveal();
-  const gridRef = useScrollReveal();
+  const headingRef = useScrollReveal<HTMLHeadingElement>();
+  const gridRef = useScrollReveal<HTMLDivElement>();
   const { t } = useLanguage();
 
   return (
@@ -607,7 +606,7 @@ function ProjetosSection() {
         {/* Header Section */}
         <div className="mb-10 md:mb-12">
           <h2
-            ref={headingRef as any}
+            ref={headingRef}
             id="projetos-heading"
             className="text-3xl md:text-4xl font-medium mb-4 text-zinc-900 leading-[1.2] uppercase tracking-[-0.02em] text-clip-reveal"
           >
@@ -628,7 +627,7 @@ function ProjetosSection() {
 
         {/* Projects Grid - 2 Columns Desktop, 1 Column Mobile */}
         <div
-          ref={gridRef as any}
+          ref={gridRef}
           className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 md:gap-y-12"
         >
           {projects.map((project, i) => (
@@ -643,22 +642,22 @@ function ProjetosSection() {
 }
 
 function ConquistasSection() {
-  const headingRef = useScrollReveal();
-  const gridRef = useScrollReveal();
+  const headingRef = useScrollReveal<HTMLHeadingElement>();
+  const gridRef = useScrollReveal<HTMLDivElement>();
   const { t } = useLanguage();
 
   return (
     <section id="conquistas" className="py-12 md:py-16 bg-zinc-50" aria-labelledby="conquistas-heading">
       <div className="container mx-auto px-6 max-w-6xl">
         <h2
-          ref={headingRef as any}
+          ref={headingRef}
           id="conquistas-heading"
           className="text-3xl md:text-4xl font-medium mb-8 text-zinc-900 apple-scale leading-[1.2] uppercase tracking-[-0.02em]"
         >
           {t("achievements.title")}
         </h2>
         <div
-          ref={gridRef as any}
+          ref={gridRef}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 apple-stagger"
         >
           {achievements.map((achievement, i) => (
