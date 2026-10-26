@@ -32,6 +32,10 @@ export interface ProjectDetail {
   industry?: string;
   tags?: string[];
   liveUrl?: string;
+  // ID do video no YouTube, nao a URL. O embed e montado em ProjectView.
+  // ponytail: hospedar o mp4 em public/ serviria 17MB sem streaming a cada
+  // visita. O YouTube ja resolve streaming, thumbnail e multiplas resolucoes.
+  youtubeId?: string;
 }
 
 export const projectDetails: Record<string, ProjectDetail> = {
@@ -463,5 +467,40 @@ export const projectDetails: Record<string, ProjectDetail> = {
         description: "Sistemas de comunicação criptografada para operações policiais"
       }
     ]
+  },
+  "conecta-oss": {
+    title: "Conecta OSS",
+    role: "Product Manager",
+    company: "Cubo Tecnologia",
+    description: "Produto evolutivo nascido de um gargalo do Cidade Conectada: a alta demanda da população em iluminação pública crescia mais rápido do que o setor conseguia atender. O Conecta OSS é o app de campo que se acopla ao sistema existente e acompanha cada demanda até o fim — do mapa do dia à foto do poste reparado.",
+    industry: "GovTech",
+    tags: ["GovTech", "Field Service", "Mobile", "Geolocalização"],
+    challenge: "O painel já mostrava as solicitações, mas quem ia até o poste trabalhava fora dele: a demanda saía do sistema em papel ou mensagem, voltava sem comprovação, e ninguém conseguia dizer se o serviço tinha sido feito. Faltava fechar o ciclo entre o que foi pedido e o que foi executado em campo.",
+    strategy: [
+      {
+        title: "Mapa e lista de demandas",
+        description: "O status de cada poste num toque. O app abre no mapa georreferenciado das demandas, com abas por status e a lista do dia logo abaixo — cada item trazendo solicitante, local e prioridade."
+      },
+      {
+        title: "Cada demanda, completa",
+        description: "Status, dados do poste e fotos do local na mesma tela: solicitante, prioridade, data, prazo e o histórico em abas de atividades e comentários."
+      },
+      {
+        title: "Etapas até concluir",
+        description: "Chegada ao local, fotos do antes, finalização do serviço, fotos do depois e conclusão da demanda. Cada etapa exige registro fotográfico, então a conclusão vem com comprovação, não com declaração."
+      },
+      {
+        title: "O sistema onde ele se acopla",
+        description: "No painel do Cidade Conectada a mesma demanda aparece em colunas por status, com mapa, filtros por prioridade, responsável, prazo e data, e relatório de produtividade por servidor."
+      }
+    ],
+    solution: [
+      "/projects/conecta-oss-1.png",
+      "/projects/conecta-oss-2.png",
+      "/projects/conecta-oss-3.png",
+      "/projects/conecta-oss-4.png",
+      "/projects/conecta-oss-5.png"
+    ],
+    youtubeId: "TS1m8QgNgf4"
   }
 };

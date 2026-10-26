@@ -92,14 +92,34 @@ export default function ProjectView({ slug }: { slug: string }) {
                   <strong className="font-medium text-zinc-900">{t("projectDetail.challenge")}</strong> {project.challenge}
                 </p>
               )}
-              {project.solution && project.solution[0] && (
-                <p className="text-base leading-relaxed">
-                  {project.solution[0]}
-                </p>
-              )}
+              {/* Aqui havia um <p>{project.solution[0]}</p>. Como solution e um
+                  array de caminhos de imagem — usado logo abaixo na galeria —
+                  isso imprimia "/projects/xxx.png" como texto do corpo em todas
+                  as paginas de projeto. */}
             </div>
           </div>
         </section>
+
+        {/* 5b. Video de demonstracao */}
+        {project.youtubeId && (
+          <section className="container mx-auto px-6 py-12 md:py-16">
+            <h2 className="text-2xl md:text-3xl font-medium text-zinc-900 mb-8 uppercase tracking-[-0.02em]">
+              {t("projectDetail.video")}
+            </h2>
+            {/* aspect-video segura o espaco antes do iframe carregar, sem CLS.
+                nocookie: nao planta cookie de rastreio de quem so passa pela pagina. */}
+            <div className="relative aspect-video overflow-hidden rounded-xl bg-zinc-100">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}`}
+                title={`${project.title} — demonstração`}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full"
+              />
+            </div>
+          </section>
+        )}
 
         {/* 6. Grid Gallery Desktop - 3x3 */}
         {project.solution && Array.isArray(project.solution) && project.solution.length > 0 && (

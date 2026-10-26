@@ -150,6 +150,24 @@ export const projects: Project[] = [
     description: "Comunicação criptografada e plataforma de Big Data com dashboards analíticos para Polícia Militar. 5 squads, ~25 pessoas.",
     tags: ["GovTech", "Big Data", "Segurança"],
     slug: "sistemas-pmerj"
+  },
+  {
+    title: "Conecta OSS",
+    role: "Product Manager",
+    company: "Cubo Tecnologia",
+    description: "App de campo que se acopla ao Cidade Conectada para dar conta da alta demanda de iluminação pública. Mapa e lista do dia, etapas com foto obrigatória e conclusão da demanda no local.",
+    tags: ["GovTech", "Service Desk", "Kanban"],
+    slug: "conecta-oss",
+    category: "b2g",
+    images: [
+      // As 5 slides da apresentacao, na ordem da narrativa: problema, mapa,
+      // demanda completa, etapas e o painel onde o app se acopla.
+      "/projects/conecta-oss-1.png",
+      "/projects/conecta-oss-2.png",
+      "/projects/conecta-oss-3.png",
+      "/projects/conecta-oss-4.png",
+      "/projects/conecta-oss-5.png"
+    ]
   }
 ];
 
