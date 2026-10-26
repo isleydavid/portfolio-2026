@@ -47,6 +47,9 @@
     "desktopViews": "INTERFAZ ESCRITORIO",
     "mobileViews": "INTERFAZ MÓVIL",
     "notFound": "Proyecto no encontrado",
-    "backHome": "← Volver al inicio"
+    "backHome": "← Volver al inicio",
+    "challenge": "Desafío:",
+    "otherProjects": "Otros Proyectos",
+    "close": "Cerrar"
   }
 }

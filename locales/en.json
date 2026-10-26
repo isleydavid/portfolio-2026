@@ -47,6 +47,9 @@
     "desktopViews": "DESKTOP INTERFACE",
     "mobileViews": "MOBILE INTERFACE",
     "notFound": "Project not found",
-    "backHome": "← Back to home"
+    "backHome": "← Back to home",
+    "challenge": "Challenge:",
+    "otherProjects": "Other Projects",
+    "close": "Close"
   }
 }
