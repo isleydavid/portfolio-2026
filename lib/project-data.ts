@@ -497,7 +497,9 @@ export const projectDetails: Record<string, ProjectDetail> = {
     solution: [
       "/projects/conecta-oss-1.png",
       "/projects/conecta-oss-2.png",
-      "/projects/conecta-oss-3.png"
+      "/projects/conecta-oss-3.png",
+      "/projects/conecta-oss-4.png",
+      "/projects/conecta-oss-5.png"
     ],
     youtubeId: "TS1m8QgNgf4"
   }
