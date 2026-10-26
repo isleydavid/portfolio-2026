@@ -32,6 +32,10 @@ export interface ProjectDetail {
   industry?: string;
   tags?: string[];
   liveUrl?: string;
+  // ID do video no YouTube, nao a URL. O embed e montado em ProjectView.
+  // ponytail: hospedar o mp4 em public/ serviria 17MB sem streaming a cada
+  // visita. O YouTube ja resolve streaming, thumbnail e multiplas resolucoes.
+  youtubeId?: string;
 }
 
 export const projectDetails: Record<string, ProjectDetail> = {
@@ -463,5 +467,38 @@ export const projectDetails: Record<string, ProjectDetail> = {
         description: "Sistemas de comunicação criptografada para operações policiais"
       }
     ]
+  },
+  "conecta-oss": {
+    title: "Conecta OSS",
+    role: "Product Manager",
+    company: "Cubo Tecnologia",
+    description: "Produto evolutivo nascido de um gargalo do Cidade Conectada: a alta demanda da população em serviços de iluminação pública travava o fluxo de solicitações. O Conecta OSS separa esse fluxo em um sistema próprio de gestão de demandas, com acompanhamento em Kanban por setor, mapa georreferenciado das solicitações, atribuição de responsável e relatório de produtividade por servidor.",
+    industry: "GovTech",
+    tags: ["GovTech", "Service Desk", "Kanban", "Geolocalização"],
+    challenge: "O volume de solicitações de iluminação pública crescia mais rápido do que o setor conseguia triar dentro da plataforma geral. Sem fila própria, sem visão espacial das demandas e sem atribuição clara de responsável, o acompanhamento virava gargalo — e o cidadão ficava sem resposta.",
+    strategy: [
+      {
+        title: "Acompanhar",
+        description: "Quadro Kanban por setor com as demandas distribuídas entre pendentes, iniciadas e concluídas. Cada card traz protocolo, prazo, prioridade e responsável, e o mapa georreferenciado mostra onde as solicitações se concentram."
+      },
+      {
+        title: "Atribuir demandas",
+        description: "Fila de solicitações com filtros por prioridade, prazo, status e responsável. A atribuição é feita direto da lista, com alteração em lote e aviso de mudanças não salvas antes de aplicar."
+      },
+      {
+        title: "Relatório",
+        description: "Consolidado de produtividade por responsável, com total de demandas concluídas no período e arquivamento do que já foi resolvido."
+      },
+      {
+        title: "Comunicação com o solicitante",
+        description: "E-mails transacionais em cada transição de estado — pendente de análise, aprovada e recusada — além da recuperação de senha, para o cidadão não precisar reenviar o pedido nem ligar para saber o andamento."
+      }
+    ],
+    solution: [
+      "/projects/conecta-oss-1.png",
+      "/projects/conecta-oss-2.png",
+      "/projects/conecta-oss-3.png"
+    ],
+    youtubeId: "TS1m8QgNgf4"
   }
 };
