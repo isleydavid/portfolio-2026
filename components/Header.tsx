@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { AGENDAMENTO_URL } from "@/lib/data";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -170,7 +171,9 @@ export function Header() {
 
           {/* CTA Button */}
           <a
-            href="mailto:idlopezgiraldo.dlg@gmail.com"
+            href={AGENDAMENTO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
             className="block w-full text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors uppercase tracking-wider"
           >
