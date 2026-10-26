@@ -472,26 +472,26 @@ export const projectDetails: Record<string, ProjectDetail> = {
     title: "Conecta OSS",
     role: "Product Manager",
     company: "Cubo Tecnologia",
-    description: "Produto evolutivo nascido de um gargalo do Cidade Conectada: a alta demanda da população em serviços de iluminação pública travava o fluxo de solicitações. O Conecta OSS separa esse fluxo em um sistema próprio de gestão de demandas, com acompanhamento em Kanban por setor, mapa georreferenciado das solicitações, atribuição de responsável e relatório de produtividade por servidor.",
+    description: "Produto evolutivo nascido de um gargalo do Cidade Conectada: a alta demanda da população em iluminação pública crescia mais rápido do que o setor conseguia atender. O Conecta OSS é o app de campo que se acopla ao sistema existente e acompanha cada demanda até o fim — do mapa do dia à foto do poste reparado.",
     industry: "GovTech",
-    tags: ["GovTech", "Service Desk", "Kanban", "Geolocalização"],
-    challenge: "O volume de solicitações de iluminação pública crescia mais rápido do que o setor conseguia triar dentro da plataforma geral. Sem fila própria, sem visão espacial das demandas e sem atribuição clara de responsável, o acompanhamento virava gargalo — e o cidadão ficava sem resposta.",
+    tags: ["GovTech", "Field Service", "Mobile", "Geolocalização"],
+    challenge: "O painel já mostrava as solicitações, mas quem ia até o poste trabalhava fora dele: a demanda saía do sistema em papel ou mensagem, voltava sem comprovação, e ninguém conseguia dizer se o serviço tinha sido feito. Faltava fechar o ciclo entre o que foi pedido e o que foi executado em campo.",
     strategy: [
       {
-        title: "Acompanhar",
-        description: "Quadro Kanban por setor com as demandas distribuídas entre pendentes, iniciadas e concluídas. Cada card traz protocolo, prazo, prioridade e responsável, e o mapa georreferenciado mostra onde as solicitações se concentram."
+        title: "Mapa e lista de demandas",
+        description: "O status de cada poste num toque. O app abre no mapa georreferenciado das demandas, com abas por status e a lista do dia logo abaixo — cada item trazendo solicitante, local e prioridade."
       },
       {
-        title: "Atribuir demandas",
-        description: "Fila de solicitações com filtros por prioridade, prazo, status e responsável. A atribuição é feita direto da lista, com alteração em lote e aviso de mudanças não salvas antes de aplicar."
+        title: "Cada demanda, completa",
+        description: "Status, dados do poste e fotos do local na mesma tela: solicitante, prioridade, data, prazo e o histórico em abas de atividades e comentários."
       },
       {
-        title: "Relatório",
-        description: "Consolidado de produtividade por responsável, com total de demandas concluídas no período e arquivamento do que já foi resolvido."
+        title: "Etapas até concluir",
+        description: "Chegada ao local, fotos do antes, finalização do serviço, fotos do depois e conclusão da demanda. Cada etapa exige registro fotográfico, então a conclusão vem com comprovação, não com declaração."
       },
       {
-        title: "Comunicação com o solicitante",
-        description: "E-mails transacionais em cada transição de estado — pendente de análise, aprovada e recusada — além da recuperação de senha, para o cidadão não precisar reenviar o pedido nem ligar para saber o andamento."
+        title: "O sistema onde ele se acopla",
+        description: "No painel do Cidade Conectada a mesma demanda aparece em colunas por status, com mapa, filtros por prioridade, responsável, prazo e data, e relatório de produtividade por servidor."
       }
     ],
     solution: [

@@ -155,7 +155,7 @@ export const projects: Project[] = [
     title: "Conecta OSS",
     role: "Product Manager",
     company: "Cubo Tecnologia",
-    description: "Desdobramento do Cidade Conectada: fila própria para a alta demanda de iluminação pública, com Kanban por setor, mapa das solicitações e atribuição de responsável.",
+    description: "App de campo que se acopla ao Cidade Conectada para dar conta da alta demanda de iluminação pública. Mapa e lista do dia, etapas com foto obrigatória e conclusão da demanda no local.",
     tags: ["GovTech", "Service Desk", "Kanban"],
     slug: "conecta-oss",
     category: "b2g",
