@@ -214,3 +214,9 @@ export const bio = {
     "Bacharelado em Administração de Empresas — UNIPÊ (2016–2020)"
   ]
 };
+
+// Agenda de compromissos do Google Calendar: mostra so os horarios livres,
+// cria o evento e envia o convite com link do Meet. Usada nos quatro CTAs de
+// reuniao. Os mailto: de CONTATO seguem sendo email — "fala comigo" nao e a
+// mesma intencao de "marca uma hora".
+export const AGENDAMENTO_URL = "https://calendar.app.google/StpMX38SKTp299317";

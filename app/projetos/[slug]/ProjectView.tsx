@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { projectDetails } from "@/lib/project-data";
-import { projects } from "@/lib/data";
+import { projects, AGENDAMENTO_URL } from "@/lib/data";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
 import { Header } from "@/components/Header";
@@ -296,7 +296,9 @@ export default function ProjectView({ slug }: { slug: string }) {
                 EXCITED? LET&rsquo;S GET MOVING.
               </h2>
               <a
-                href="mailto:idlopezgiraldo.dlg@gmail.com"
+                href={AGENDAMENTO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

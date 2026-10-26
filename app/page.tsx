@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { bio, experiences, projects, achievements, skills } from "@/lib/data";
+import { bio, experiences, projects, achievements, skills, AGENDAMENTO_URL } from "@/lib/data";
 import { useState, useEffect, useRef } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -120,7 +120,9 @@ export default function Home() {
                 {t("cta.title")}
               </h2>
               <a
-                href="mailto:idlopezgiraldo.dlg@gmail.com"
+                href={AGENDAMENTO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 uppercase tracking-wider text-sm shadow-md hover:shadow-lg"
               >
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -506,7 +508,9 @@ function HeroSection() {
 
             {/* Botão CTA - Mobile direita, Desktop normal */}
             <a
-              href="mailto:idlopezgiraldo.dlg@gmail.com"
+              href={AGENDAMENTO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="self-end md:self-auto inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:scale-95 transition-all duration-200 hover:gap-3 md:hover:gap-4 shadow-md hover:shadow-lg uppercase tracking-wider text-xs md:text-[13.7px] relative z-20"
             >
               {t("cta.button")}
