@@ -84,7 +84,16 @@ export const projectDetails: Record<string, ProjectDetail> = {
     },
     solution: [
       "/projects/legislativo-conectado.png",
-      "/projects/legislativo-conectado-2.png"
+      "/projects/legislativo-conectado-2.png",
+      "/projects/legislativo-conectado-3.png",
+      "/projects/legislativo-conectado-4.png",
+      "/projects/legislativo-conectado-5.png"
+    ],
+    mobileImages: [
+      "/projects/legislativo-app-onboarding.png",
+      "/projects/legislativo-app-home.png",
+      "/projects/legislativo-app-menu.png",
+      "/projects/legislativo-app-chat.png"
     ],
     insights: [
       {
