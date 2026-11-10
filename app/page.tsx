@@ -52,7 +52,10 @@ export default function Home() {
         {/* Infinite Carousel */}
         <InfiniteCarousel />
 
-        {/* Sobre Mim */}
+        {/* Projetos */}
+        <ProjetosSection />
+
+        {/* Sobre Mim — depois dos projetos: o visitante vem pelo trabalho, nao pela bio */}
         <section ref={sobreRef} id="sobre" className="py-12 md:py-16 bg-white apple-fade" aria-labelledby="sobre-heading">
           <div className="container mx-auto px-6 max-w-4xl">
             <h2 id="sobre-heading" className="text-3xl md:text-4xl font-medium mb-8 text-zinc-900 uppercase tracking-[-0.02em] text-clip-reveal">{t("about.title")}</h2>
@@ -99,9 +102,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Projetos */}
-        <ProjetosSection />
 
         {/* Conquistas */}
         <ConquistasSection />
