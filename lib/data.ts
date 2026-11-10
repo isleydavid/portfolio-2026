@@ -84,7 +84,7 @@ export const projects: Project[] = [
     title: "Cidade Conectada",
     role: "Gerente de Projetos",
     company: "Cubo Tecnologia",
-    description: "Plataforma municipal com 600+ serviços digitais. Aplicativo white-label para cidadãos, Portal do Servidor e Dashboard do Prefeito.",
+    description: "Plataforma municipal com 600+ serviços digitais, em produção em 6 cidades e 2M+ cidadãos. App white-label, Portal do Servidor e Dashboard do Prefeito.",
     tags: ["GovTech", "White-label", "Mobile"],
     slug: "cidade-conectada",
     images: ["/projects/cidade-conectada.png", "/projects/cidade-conectada-2.png", "/projects/cidade-conectada-3.png"]
