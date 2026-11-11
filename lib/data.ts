@@ -72,6 +72,20 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    title: "Imoobile (SupBrokers)",
+    role: "Sócio e Product Manager",
+    company: "SaaS próprio",
+    description: "SaaS imobiliário para corretor, imobiliária e construtora no mesmo produto: CRM com funil, espelho de vendas por empreendimento, financeiro de comissões, site público do corretor e app de campo para a rotina de visitas.",
+    tags: ["SaaS", "Proptech", "CRM", "Mobile"],
+    slug: "imoobile",
+    category: "b2b",
+    images: [
+      "/projects/imoobile-1.png",
+      "/projects/imoobile-3.png",
+      "/projects/imoobile-4.png"
+    ]
+  },
+  {
     title: "Legislativo Conectado",
     role: "Gerente de Produto",
     company: "Cubo Tecnologia",
