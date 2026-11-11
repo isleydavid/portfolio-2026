@@ -58,14 +58,14 @@ export const experiences: Experience[] = [
     year: "2022",
     period: "ago/2022 – abr/2023",
     title: "Product Owner",
-    company: "UBTech Office / Unipê — PMERJ",
+    company: "UBTech Office / Unipê — Polícia Militar (PB)",
     description: "Fábrica com 5 squads (~25 pessoas) entregando sistemas críticos para Polícia Militar."
   },
   {
     year: "2022",
     period: "jan/2022 – ago/2022",
     title: "Scrum Master",
-    company: "UBTech Office / Unipê — PMERJ",
+    company: "UBTech Office / Unipê — Polícia Militar (PB)",
     description: "Implantação de Scrum e Kanban em projetos estratégicos."
   }
 ];
@@ -144,12 +144,26 @@ export const projects: Project[] = [
     images: ["/projects/atlas-dashboard.png", "/projects/atlas-m4lab-1.png"]
   },
   {
-    title: "Sistemas PMERJ",
+    title: "Big Data de Patrulhamento",
     role: "Product Owner / Scrum Master",
     company: "UBTech / Unipê",
-    description: "Comunicação criptografada e plataforma de Big Data com dashboards analíticos para Polícia Militar. 5 squads, ~25 pessoas.",
-    tags: ["GovTech", "Big Data", "Segurança"],
-    slug: "sistemas-pmerj"
+    description: "Tratamento da base de monitoramento de patrulhas com reconhecimento por área de calor e dashboards de acompanhamento para o comando. Projeto sigiloso: telas em wireframe.",
+    tags: ["GovTech", "Big Data", "Dashboards"],
+    slug: "big-data-patrulhamento",
+    category: "b2g",
+    images: ["/projects/pm-dados-2.svg", "/projects/pm-dados-1.svg", "/projects/pm-dados-3.svg"]
+  },
+  {
+    title: "Mensageria Criptografada",
+    role: "Product Owner / Scrum Master",
+    company: "UBTech / Unipê",
+    description: "Feed cifrado ponta a ponta para a polícia publicar informações de roubo fora do WhatsApp: publicação, comentários e mídia com controle de acesso por unidade e função. Projeto sigiloso: telas em wireframe.",
+    tags: ["GovTech", "Criptografia", "Segurança"],
+    slug: "mensageria-criptografada",
+    category: "b2g",
+    // Capa dos tres aparelhos: o card corta em 16:9 com object-cover, e um
+    // frame de celular sozinho apareceria como uma faixa cinza do meio da tela.
+    images: ["/projects/pm-chat-cover.svg"]
   },
   {
     title: "Conecta OSS",

@@ -438,33 +438,111 @@ export const projectDetails: Record<string, ProjectDetail> = {
       }
     ]
   },
-  "sistemas-pmerj": {
-    title: "Sistemas PMERJ",
+  // Os dois projetos da Polícia Militar são sigilosos: nenhuma tela real pode
+  // ser publicada. As imagens são wireframes em escala de cinza desenhados do
+  // zero — layout reconhecível, todo dado substituído por tarja. Ver
+  // public/projects/pm-*.svg.
+  "big-data-patrulhamento": {
+    title: "Big Data de Patrulhamento",
     role: "Product Owner / Scrum Master",
-    company: "UBTech / Unipê",
-    description: "Fábrica de software entregando sistemas críticos de comunicação criptografada e plataforma de Big Data para Polícia Militar do Rio de Janeiro.",
+    company: "UBTech / Unipê — Polícia Militar da Paraíba",
+    industry: "GovTech / Segurança Pública",
+    tags: ["Big Data", "Tratamento de Dados", "Dashboards", "Geolocalização"],
+    description: "Plataforma de tratamento de dados do monitoramento de patrulhas, com mapeamento e reconhecimento por área de calor. A proposta foi limpar e tratar a base bruta e devolvê-la em dashboards de acompanhamento que sustentam a tomada de decisão do comando. Projeto sigiloso: as telas abaixo são reconstruções em wireframe, sem nenhum dado real.",
+    challenge: "Os dados do patrulhamento existiam, mas chegavam dispersos, duplicados e sem padronização — o que tornava impossível responder a perguntas simples de operação, como onde a cobertura estava concentrada e onde faltava. A decisão de alocação dependia de leitura manual e de experiência pessoal, não de evidência.",
     strategy: [
       {
-        title: "Problema",
-        description: "Necessidade de comunicação segura e análise de dados em tempo real para operações policiais críticas."
+        title: "Limpeza e tratamento",
+        description: "Pipeline que normaliza, deduplica e valida os registros de patrulhamento antes de qualquer leitura. Nada entra no painel sem passar pelas etapas de tratamento — o dado exibido é dado auditado."
       },
       {
-        title: "Solução",
-        description: "Suite de sistemas incluindo FeedFront, Cidadania Ativa, Dashboard de Monitoramento e plataforma de Big Data."
+        title: "Mapa de calor por área",
+        description: "Reconhecimento territorial por intensidade: as áreas aparecem no mapa pelo volume e pela recorrência, revelando concentração e vazio de cobertura sem exigir que ninguém leia planilha."
       },
       {
-        title: "Approach",
-        description: "Implantação de Scrum e Kanban, capacitação em Jira/Confluence, gestão direta com stakeholders da PMERJ."
+        title: "Dashboards de acompanhamento",
+        description: "Visão de acompanhamento com indicadores, série temporal e recorte por área e período. O painel foi desenhado para a rotina do comando: abrir, ler em poucos segundos e decidir."
+      },
+      {
+        title: "Treinamento interno e externo",
+        description: "Capacitação do time de desenvolvimento e produto na fábrica, e do time da Polícia Militar que opera o sistema. Entrega não termina no deploy: termina quando quem usa consegue usar sozinho."
       }
+    ],
+    // Mapa de calor primeiro: e a tela que resume o projeto num olhar.
+    solution: [
+      "/projects/pm-dados-2.svg",
+      "/projects/pm-dados-1.svg",
+      "/projects/pm-dados-3.svg"
     ],
     insights: [
       {
-        metric: "5 squads",
-        description: "Fábrica com ~25 pessoas entre devs, QA e design"
+        metric: "Entregue ao comando",
+        description: "Sistema entregue ao Tenente-Coronel Diógenes, da Polícia Militar em João Pessoa"
       },
       {
-        metric: "100% crítico",
-        description: "Sistemas de comunicação criptografada para operações policiais"
+        metric: "Dados tratados",
+        description: "Base bruta de monitoramento normalizada e validada antes de chegar ao painel"
+      },
+      {
+        metric: "Mapa de calor",
+        description: "Reconhecimento por área com intensidade de patrulhamento e vazios de cobertura"
+      },
+      {
+        metric: "Treinamento duplo",
+        description: "Capacitação do time interno de dev e produto e do time externo da corporação"
+      }
+    ]
+  },
+  "mensageria-criptografada": {
+    title: "Mensageria Criptografada",
+    role: "Product Owner / Scrum Master",
+    company: "UBTech / Unipê — Polícia Militar da Paraíba",
+    industry: "GovTech / Segurança Pública",
+    tags: ["Criptografia", "Mensageria", "Controle de Acesso", "Segurança"],
+    description: "Sistema de comunicação criptografada para a polícia compartilhar informações de roubo e abandonar o WhatsApp nesse fluxo. A inspiração foi deliberadamente simples: no celular, a mesma fluidez de um feed — publicação, comentário e mídia — com a segurança e o controle de acesso que uma informação delicada exige. Projeto sigiloso: as telas abaixo são reconstruções em wireframe, sem nenhum dado real.",
+    challenge: "Informação sensível de ocorrências circulava em aplicativo pessoal: sem controle de quem entra no grupo, sem como revogar acesso de quem sai da função, sem rastro de quem leu o quê. E a informação útil — foto do veículo, vídeo da abordagem, o complemento que alguém lembrou depois — se perdia no rolo da conversa. O desafio não era criar um mensageiro: era criar um sistema que as pessoas usassem com a mesma naturalidade do app pessoal e que, ao mesmo tempo, fechasse esse buraco.",
+    strategy: [
+      {
+        title: "Feed no lugar do grupo",
+        description: "No celular, cada ocorrência é uma publicação na linha do tempo, com autor, mídia e horário. O policial abre e lê como leria qualquer feed — a informação para de depender de rolar duzentas mensagens para trás."
+      },
+      {
+        title: "Comentário como apuração",
+        description: "Cada publicação carrega seus próprios comentários. O complemento, a correção e o reconhecimento ficam presos à ocorrência que os originou, e não soltos no meio de outra conversa."
+      },
+      {
+        title: "Mídia sob controle",
+        description: "Imagem e vídeo são anexados à publicação com destino, nível de acesso e validade definidos no ato do compartilhamento. Compartilhar deixa de ser encaminhar: é publicar para quem pode ver."
+      },
+      {
+        title: "Cifrado e rastreável",
+        description: "Conteúdo cifrado ponta a ponta, perfis e permissões por unidade e função, e trilha de auditoria do que foi compartilhado e por quem. Acesso é concedido e revogado no sistema, não negociado em grupo."
+      }
+    ],
+    // Sem solution: o produto so existiu como aplicativo, nunca teve tela
+    // desktop. A galeria de projeto fica so com os frames de celular.
+    mobileImages: [
+      "/projects/pm-chat-m1.svg",
+      "/projects/pm-chat-m2.svg",
+      "/projects/pm-chat-m3.svg",
+      "/projects/pm-chat-m4.svg"
+    ],
+    insights: [
+      {
+        metric: "Fim do WhatsApp",
+        description: "Publicações, comentários e mídia substituem o grupo em aplicativo pessoal"
+      },
+      {
+        metric: "Ponta a ponta",
+        description: "Conteúdo cifrado em trânsito e em repouso, legível apenas nas pontas autorizadas"
+      },
+      {
+        metric: "Acesso controlado",
+        description: "Perfis por unidade e função, com concessão e revogação dentro do sistema"
+      },
+      {
+        metric: "Entregue ao comando",
+        description: "Sistema entregue ao Tenente-Coronel Diógenes, com treinamento interno e externo"
       }
     ]
   },
