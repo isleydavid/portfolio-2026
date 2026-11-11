@@ -153,13 +153,16 @@ export default function ProjectView({ slug }: { slug: string }) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {project.mobileImages.map((image, i) => (
                 <div key={i} className="bg-white rounded-xl overflow-hidden shadow-sm group">
+                  {/* ponytail: aspecto de tela de celular fixo no slot. Com h-auto
+                      quem mandava na altura era o arquivo, e export de pagina
+                      inteira esticava o card. */}
                   <Image
                     src={image}
                     alt={`${project.title} - Mobile Screenshot ${i + 1}`}
-                    width={400}
-                    height={800}
+                    width={390}
+                    height={844}
                     loading="lazy"
-                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                    className="w-full aspect-[390/844] object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
                   />
                 </div>
               ))}
