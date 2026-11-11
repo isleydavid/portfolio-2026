@@ -19,10 +19,10 @@ export function Header() {
   ];
 
   const menuItems = [
-    { href: "/#sobre", label: "about.title" },
     { href: "/#projetos", label: "projects.title" },
-    { href: "/#trajetoria", label: "journey.title" },
+    { href: "/#sobre", label: "about.title" },
     { href: "/#conquistas", label: "achievements.title" },
+    { href: "/#trajetoria", label: "journey.title" },
     { href: "mailto:idlopezgiraldo.dlg@gmail.com", label: "footer.contact" },
   ];
 

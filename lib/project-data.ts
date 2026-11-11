@@ -84,7 +84,16 @@ export const projectDetails: Record<string, ProjectDetail> = {
     },
     solution: [
       "/projects/legislativo-conectado.png",
-      "/projects/legislativo-conectado-2.png"
+      "/projects/legislativo-conectado-2.png",
+      "/projects/legislativo-conectado-3.png",
+      "/projects/legislativo-conectado-4.png",
+      "/projects/legislativo-conectado-5.png"
+    ],
+    mobileImages: [
+      "/projects/legislativo-app-onboarding.png",
+      "/projects/legislativo-app-home.png",
+      "/projects/legislativo-app-menu.png",
+      "/projects/legislativo-app-chat.png"
     ],
     insights: [
       {
@@ -109,7 +118,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     title: "Cidade Conectada",
     role: "Gerente de Projetos",
     company: "Cubo Tecnologia",
-    description: "Uma plataforma municipal integrada que oferece mais de 600 serviços digitais aos cidadãos. O Cidade Conectada transforma burocracia em agilidade através de três pilares: aplicativo white-label para cidadãos, Portal do Servidor para gestão de solicitações e Dashboard do Prefeito para monitoramento executivo em tempo real. A plataforma elimina filas, reduz uso de papel, digitaliza processos e desburocratiza a relação entre cidadão e prefeitura — tudo acessível pela palma da mão.",
+    description: "Sistema em produção hoje, atendendo 6 municípios. Plataforma municipal integrada com mais de 600 serviços digitais, construída do zero e mantida em operação contínua. O Cidade Conectada transforma burocracia em agilidade através de três pilares: aplicativo white-label para cidadãos, Portal do Servidor para gestão de solicitações e Dashboard do Prefeito para monitoramento executivo em tempo real. O produto virou referência em frentes distintas: destaque internacional em gestão política em João Pessoa (PB), em saúde em Campina Grande (PB) e Feira de Santana (BA), e em gestão interna em Caruaru (PE).",
     industry: "GovTech",
     tags: ["Product Management", "White-label", "Omnichannel", "Mobile"],
     challenge: "Processos burocráticos dependentes de papel, filas presenciais intermináveis, lentidão no atendimento e dificuldade de acompanhamento de solicitações pelos cidadãos. Prefeituras enfrentavam sobrecarga em setores com alta demanda e ausência de transparência no status de processos.",
@@ -159,20 +168,20 @@ export const projectDetails: Record<string, ProjectDetail> = {
     solution: ["/projects/cidade-conectada.png", "/projects/cidade-conectada-2.png", "/projects/cidade-conectada-3.png"],
     insights: [
       {
+        metric: "6 cidades",
+        description: "Do zero à manutenção contínua: João Pessoa (PB), Campina Grande (PB), Cabedelo (PB), Feira de Santana (BA), Caruaru (PE) e outras"
+      },
+      {
+        metric: "2M+ cidadãos",
+        description: "Alcance somado dos municípios atendidos pela plataforma"
+      },
+      {
+        metric: "R$ 2,5M/ano",
+        description: "Economia estimada em papel por município, fora a redução de custo operacional"
+      },
+      {
         metric: "600+ serviços",
-        description: "Catálogo completo de serviços municipais digitalizados disponíveis via app"
-      },
-      {
-        metric: "4 cidades em produção",
-        description: "João Pessoa (PB), Campina Grande (PB), Cabedelo (PB) e Feira de Santana (BA)"
-      },
-      {
-        metric: "100% paperless",
-        description: "Eliminação total de papel e processos físicos nos serviços digitalizados"
-      },
-      {
-        metric: "White-label",
-        description: "App customizável com identidade visual, nome e serviços selecionados por município"
+        description: "Catálogo municipal digitalizado e disponível via app, web e Portal do Servidor"
       }
     ]
   },

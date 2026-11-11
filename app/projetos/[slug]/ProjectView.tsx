@@ -100,6 +100,25 @@ export default function ProjectView({ slug }: { slug: string }) {
           </div>
         </section>
 
+        {/* 5a. Resultados */}
+        {project.insights && project.insights.length > 0 && (
+          <section className="py-12 md:py-16 bg-zinc-50">
+            <div className="container mx-auto px-6">
+              <h2 className="text-2xl md:text-3xl font-medium text-zinc-900 mb-10 uppercase tracking-[-0.02em]">
+                {t("projectDetail.results")}
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl">
+                {project.insights.map((insight, i) => (
+                  <div key={i}>
+                    <p className="text-2xl md:text-3xl font-medium text-zinc-900 mb-2 tracking-[-0.02em]">{insight.metric}</p>
+                    <p className="text-sm text-zinc-600 leading-relaxed">{insight.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* 5b. Video de demonstracao */}
         {project.youtubeId && (
           <section className="container mx-auto px-6 py-12 md:py-16">
