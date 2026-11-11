@@ -39,6 +39,74 @@ export interface ProjectDetail {
 }
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  "imoobile": {
+    title: "Imoobile (SupBrokers)",
+    role: "Sócio e Product Manager",
+    company: "SaaS próprio",
+    description: "SaaS imobiliário construído com clientes já em operação. O Imoobile atende corretor autônomo, imobiliária e construtora dentro do mesmo produto: o cadastro pergunta o perfil e a partir dali a home, os módulos e os números mudam. Painel web com 26 áreas de produto e app de campo (iMoobile) para a rotina que acontece fora do escritório.",
+    industry: "Proptech",
+    tags: ["SaaS", "Proptech", "CRM", "Product Management", "Mobile"],
+    challenge: "Corretor, imobiliária e construtora vendem o mesmo imóvel e precisam de coisas diferentes: o corretor quer a próxima ação do dia, a imobiliária quer funil e produtividade da equipe, a construtora quer o espelho de vendas da torre. Atender os três em ferramentas separadas quebra o dado no meio do caminho — o lead vive no CRM, a unidade vive na planilha e a comissão vive no financeiro. O desafio foi manter um produto só, com a mesma base de imóveis, leads e contratos, mudando apenas o que cada perfil vê.",
+    strategy: [
+      {
+        title: "Um produto, três perfis",
+        description: "O cadastro define se a conta é de corretor autônomo, imobiliária ou construtora/incorporadora. A home muda junto: o corretor abre em meta do mês e próxima ação, a imobiliária em leads, VGV e ranking de corretores, a construtora em estoque e velocidade de vendas por empreendimento."
+      },
+      {
+        title: "CRM com o funil inteiro",
+        description: "Funil de 7 etapas do novo lead ao fechamento, com score por lead, origem (portais, Meta Ads, site público, indicação), responsável e histórico. A ficha do lead concentra contato, imóveis de interesse, follow-ups agendados e a linha do tempo de tudo que já foi feito."
+      },
+      {
+        title: "Espelho de vendas do empreendimento",
+        description: "Para a construtora, cada empreendimento tem o espelho por andar e final: disponível, reservada, bloqueada e vendida, com estoque em R$, tipologias e página pública da torre. É a planilha de disponibilidade virando tela compartilhada entre incorporadora e corretores."
+      },
+      {
+        title: "Financeiro até a comissão",
+        description: "Vendas, parcelas, pagamentos, despesas, extrato e o módulo de comissões do corretor. A venda que entrou pelo funil vira contrato, parcela e comissão sem redigitação — o mesmo registro atravessa o produto inteiro."
+      },
+      {
+        title: "Site do corretor e páginas públicas",
+        description: "Cada conta publica um site próprio com a sua marca, busca por cidade, bairro e tipo de imóvel, páginas de empreendimento, equipe, blog e link na bio. O imóvel cadastrado no painel já nasce publicável, e o formulário do site devolve o lead direto no funil."
+      },
+      {
+        title: "App de campo (iMoobile)",
+        description: "A visita acontece na rua, não no desktop. O app abre na meta do mês e na próxima ação, tem o funil em kanban arrastável, agenda da semana, check-in da visita com fotos e assinatura do cliente, e a calculadora de fluxo de pagamento com entrada, parcelas, balões, ITBI, registro e escritura — resultado que o corretor compartilha na hora pelo WhatsApp."
+      }
+    ],
+    solution: [
+      "/projects/imoobile-1.png",
+      "/projects/imoobile-2.png",
+      "/projects/imoobile-3.png",
+      "/projects/imoobile-4.png",
+      "/projects/imoobile-5.png",
+      "/projects/imoobile-6.png",
+      "/projects/imoobile-7.png"
+    ],
+    mobileImages: [
+      "/projects/imoobile-app-1.png",
+      "/projects/imoobile-app-2.png",
+      "/projects/imoobile-app-3.png",
+      "/projects/imoobile-app-4.png"
+    ],
+    insights: [
+      {
+        metric: "3 perfis",
+        description: "Corretor autônomo, imobiliária e construtora/incorporadora no mesmo produto, com home e módulos próprios"
+      },
+      {
+        metric: "26 áreas de produto",
+        description: "Do acesso ao financeiro: imóveis, captações, empreendimentos, aluguéis, CRM, plantão, visitas, contratos, simuladores, comunicação e relatórios"
+      },
+      {
+        metric: "Funil de 7 etapas",
+        description: "Do novo lead ao fechamento, com score, origem do lead e follow-up agendado"
+      },
+      {
+        metric: "Web + app",
+        description: "Painel completo para o escritório e app de campo para visita, check-in com foto, assinatura e simulação de fluxo"
+      }
+    ]
+  },
   "legislativo-conectado": {
     title: "Legislativo Conectado",
     role: "Gerente de Produto",
